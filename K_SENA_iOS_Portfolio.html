@@ -5,10 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>K.SENA | iOS Application Developer</title>
     
-    <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts: Inter & Noto Sans for multilingual support -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
@@ -121,11 +119,21 @@
         .policy-content { display: none; }
         .policy-content.active { display: block; }
 
+        /* ポリシー内のリストスタイル */
+        .policy-content ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-bottom: 1rem;
+            color: #4b5563; /* text-gray-600 */
+        }
+        .policy-content li {
+            margin-bottom: 0.25rem;
+        }
+
     </style>
 </head>
 <body>
 
-    <!-- ナビゲーション -->
     <nav class="glass-nav fixed top-0 w-full z-50 h-12 flex items-center justify-center">
         <div class="max-w-[980px] w-full px-6 flex justify-between items-center text-xs font-light">
             <a href="#" class="text-lg font-semibold tracking-tight text-[#1d1d1f]">K.SENA</a>
@@ -137,7 +145,6 @@
                     <a href="#contact" class="hover:text-black transition-colors" data-translate="nav_contact">Contact</a>
                 </div>
                 
-                <!-- 言語スイッチャー -->
                 <div class="flex space-x-2 text-[#86868b] border-l border-gray-300 pl-4 ml-2">
                     <span class="lang-btn active" onclick="switchLang('en')">EN</span>
                     <span class="lang-btn" onclick="switchLang('ja')">JP</span>
@@ -149,7 +156,6 @@
     </nav>
 
     <main>
-        <!-- ヒーローセクション -->
         <section class="min-h-[90vh] flex flex-col items-center justify-center text-center px-6 pt-20">
             <div class="hero-anim">
                 <h2 class="text-[#f56300] font-medium text-xl mb-4 tracking-wide" data-translate="hero_subtitle">Developer Portfolio</h2>
@@ -169,13 +175,11 @@
             </div>
         </section>
 
-        <!-- アプリショーケース -->
         <section id="apps" class="max-w-[1200px] mx-auto px-6 py-24">
             <h3 class="text-3xl md:text-4xl font-bold mb-16 text-center fade-up" data-translate="apps_header">Crafted for iPhone.</h3>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
-                <!-- App 1: EmotionLights (Representative App) -->
                 <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-center justify-between min-h-[400px] fade-up cursor-pointer">
                     <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pr-12">
                         <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app1_category">Universal Communication</span>
@@ -188,15 +192,12 @@
                         </div>
                     </div>
                     <div class="flex-1 flex justify-center">
-                        <!-- App Icon Image -->
                         <img src="images/Top.png" alt="EmotionLights App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
                     </div>
                 </div>
 
-                <!-- App 3 (Now App 2): Sena Valentine (Digital Overdose / Artist Persona) -->
                 <div class="md:col-span-2 app-card rounded-3xl overflow-hidden relative min-h-[400px] flex items-center bg-black fade-up">
                     <div class="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent z-10"></div>
-                    <!-- Background image placeholder -->
                     <div class="absolute inset-0 opacity-40 bg-[url('images/MyAvator.png')] bg-cover bg-center"></div>
                     
                     <div class="relative z-20 p-10 md:p-20 max-w-2xl">
@@ -215,7 +216,6 @@
             </div>
         </section>
 
-        <!-- Philosophy Section -->
         <section id="philosophy" class="bg-white py-32">
             <div class="max-w-[980px] mx-auto px-6 text-center">
                 <h3 class="text-4xl md:text-6xl font-bold mb-8 fade-up text-[#1d1d1f]" data-translate="philo_title">Designed for humans.</h3>
@@ -226,17 +226,14 @@
             </div>
         </section>
 
-        <!-- Footer -->
         <footer id="contact" class="bg-[#f5f5f7] border-t border-gray-200 pt-10 pb-10 text-xs text-[#86868b]">
             <div class="max-w-[980px] mx-auto px-6">
                 <div class="flex flex-col md:flex-row justify-between items-center gap-4">
                     <div>
-                        <p data-translate="copyright">Copyright © 2025 K.SENA. All rights reserved.</p>
+                        <p data-translate="copyright">Copyright © 2026 K.SENA. All rights reserved.</p>
                     </div>
                     <div class="flex gap-6">
-                        <!-- プライバシーポリシーを開くボタン -->
                         <button onclick="openPrivacyModal()" class="hover:underline text-[#1d1d1f] cursor-pointer" data-translate="privacy_link">Privacy Policy</button>
-                        
                         <a href="mailto:senacore@icloud.com" class="hover:underline text-[#1d1d1f]" data-translate="contact_link">Contact</a>
                     </div>
                 </div>
@@ -245,96 +242,148 @@
                 </div>
             </div>
         </footer>
-
-        <!-- Back to Dark Side Link (Removed) -->
     </main>
 
-    <!-- Privacy Policy Modal -->
     <div id="privacyModal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
-        <!-- Overlay -->
         <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
         
-        <!-- Modal Content -->
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto relative z-10 m-4 p-8 md:p-12">
             <button onclick="closePrivacyModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors">✕</button>
             
             <h2 class="text-2xl font-bold mb-8 text-[#1d1d1f]" data-translate="privacy_title">Privacy Policy</h2>
             
             <div class="text-[#1d1d1f] space-y-6 leading-relaxed text-sm md:text-base">
-                <!-- English Content -->
+                
                 <div class="policy-content en active">
-                    <p class="font-bold text-gray-500 mb-2">Respect for Privacy</p>
-                    <p>We respect user privacy and strive to ensure that you can use our services with peace of mind.</p>
+                    <p>This Privacy Policy applies to the apps and websites provided by K.SENA (hereinafter referred to as "our service").</p>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">Collection of Information</p>
-                    <p>We do not collect any information, including user personal information.</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">1. Information Collection and Use</p>
+                    <p>We may collect and use the following information to the extent necessary to provide and improve our apps.</p>
+                    <ul>
+                        <li><strong>Device Information:</strong> Information necessary for app functionality (e.g., battery level, OS version, language settings).</li>
+                        <li><strong>User Content:</strong> Text, images, or other data that users voluntarily input or send within the app (e.g., chat messages).</li>
+                        <li><strong>Usage Data:</strong> Anonymous statistical data such as crash logs and performance analysis.</li>
+                    </ul>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">Third-Party Provision</p>
-                    <p>Since we do not acquire any information including personal information, we do not provide information to third parties.</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">2. Use of Third-Party Services</p>
+                    <p>Some of our services may use the following third-party services for data storage, user authentication, or analytics. Information collected by these services is managed according to their respective privacy policies.</p>
+                    <ul>
+                        <li><strong>Google Firebase:</strong> Used for database, authentication, and analytics.<br>
+                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google Privacy Policy</a></li>
+                    </ul>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">External Service Linkage</p>
-                    <p>We do not cooperate with external analysis tools or advertising services, nor do we transmit information.</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">3. User Generated Content (UGC)</p>
+                    <p>In apps with user communication features (e.g., Chat), we implement monitoring, reporting, and blocking functions to maintain a healthy community and prevent inappropriate content (such as offensive language or harassment).</p>
+                    
+                    <p class="font-bold text-gray-500 mb-2 mt-6">4. Data Management and Third-Party Provision</p>
+                    <p>We do not provide personal information to third parties without user consent, except as required by law or to protect the life or property of individuals.</p>
+                    
+                    <p class="font-bold text-gray-500 mb-2 mt-6">5. Disclaimer</p>
+                    <p>We are not responsible for any trouble or damage caused by the use of our service. Please understand that apps utilizing battery monitoring features may consume battery power due to their nature.</p>
+                    
+                    <p class="font-bold text-gray-500 mb-2 mt-6">6. Changes to Privacy Policy</p>
+                    <p>This policy may be updated without prior notice due to service changes or legal amendments. Important changes will be notified on this site or within the app.</p>
                     
                     <p class="font-bold text-gray-500 mb-2 mt-6">Contact Us</p>
-                    <p>If you have any questions or comments, please contact us at the email address below.<br>
+                    <p>If you have any questions, please contact us at:<br>
                     Email: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
+                    <p class="text-right text-gray-400 text-xs mt-4">Last Updated: January 2, 2026</p>
                 </div>
 
-                <!-- Japanese Content -->
                 <div class="policy-content ja">
-                    <p class="font-bold text-gray-500 mb-2">プライバシーポリシー</p>
-                    <p>我々はユーザーのプライバシーを尊重し、安心してご利用いただけるよう努めています。</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">情報の収集について</p>
-                    <p>我々はユーザーの個人情報を含むいかなる情報も収集いたしません。</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">第三者提供について</p>
-                    <p>我々は個人情報を含むいかなる情報も取得していないため、第三者への情報提供も行いません。</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">外部サービスとの連携について</p>
-                    <p>我々は外部の分析ツールや広告サービス等とも連携しておらず、情報の送信も行っておりません。</p>
-                    
+                    <p>当方は、提供するスマートフォンアプリおよびウェブサイト（以下、「当サービス」）におけるユーザー情報の取り扱いについて、以下の通りプライバシーポリシーを定めます。</p>
+
+                    <p class="font-bold text-gray-500 mb-2 mt-6">1. 情報の収集と利用について</p>
+                    <p>当サービスでは、アプリの機能提供および品質向上のため、必要最小限の範囲で以下の情報を取得・利用する場合があります。</p>
+                    <ul>
+                        <li><strong>端末情報:</strong> アプリの機能実現に必要なデバイス情報（バッテリー残量、OSバージョン、言語設定など）。</li>
+                        <li><strong>ユーザーコンテンツ:</strong> チャットアプリやメモアプリ等において、ユーザー自身が入力・送信したテキストや画像データ。</li>
+                        <li><strong>利用状況データ:</strong> クラッシュ情報やパフォーマンス分析など、個人を特定しない統計データ。</li>
+                    </ul>
+
+                    <p class="font-bold text-gray-500 mb-2 mt-6">2. 第三者サービスの利用について</p>
+                    <p>当サービスの一部では、データの保存やユーザー認証のために以下の第三者サービスを利用することがあります。これらのサービスにより収集された情報は、各社のプライバシーポリシーに基づいて管理されます。</p>
+                    <ul>
+                        <li><strong>Google Firebase:</strong> データベース、認証、解析のために利用します。<br>
+                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google プライバシーポリシー</a></li>
+                    </ul>
+
+                    <p class="font-bold text-gray-500 mb-2 mt-6">3. ユーザー投稿コンテンツ（UGC）について</p>
+                    <p>ユーザー間のコミュニケーション機能を持つアプリにおいては、健全なコミュニティ維持のため、不適切なコンテンツ（公序良俗に反する内容、誹謗中傷など）の監視、削除、および通報・ブロック機能を提供する場合があります。</p>
+
+                    <p class="font-bold text-gray-500 mb-2 mt-6">4. 個人情報の管理と第三者提供</p>
+                    <p>当方は、法令に基づく場合や、人の生命・財産の保護が必要な場合を除き、ユーザーの同意なく個人情報を第三者に提供することはありません。</p>
+
+                    <p class="font-bold text-gray-500 mb-2 mt-6">5. 免責事項</p>
+                    <p>当サービスの利用により生じたトラブルや損害について、開発者は原則として責任を負いかねます。また、バッテリー監視等の機能を利用するアプリに関しては、特性上バッテリー消費が発生することをご了承ください。</p>
+
+                    <p class="font-bold text-gray-500 mb-2 mt-6">6. プライバシーポリシーの変更</p>
+                    <p>本ポリシーの内容は、サービスの追加や法令の変更に伴い、予告なく改定されることがあります。重要な変更については、当サイトまたはアプリ内にて通知します。</p>
+
                     <p class="font-bold text-gray-500 mb-2 mt-6">お問い合わせ</p>
-                    <p>ご質問、ご意見等がある場合は、以下のメールアドレスまでご連絡ください。<br>
+                    <p>本ポリシーや当サービスに関するご質問は、以下の連絡先までお問い合わせください。<br>
                     メールアドレス: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
+                    <p class="text-right text-gray-400 text-xs mt-4">最終更新日: 2026年1月2日</p>
                 </div>
 
-                <!-- Traditional Chinese Content -->
                 <div class="policy-content zh-TW">
-                    <p class="font-bold text-gray-500 mb-2">隱私權政策</p>
-                    <p>我們尊重用戶的隱私，並致力於確保您可以安心使用我們的服務。</p>
+                    <p>本隱私權政策適用於 K.SENA 提供的應用程式及網站（以下簡稱「本服務」）。</p>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">關於信息收集</p>
-                    <p>我們不會收集任何信息，包括用戶的個人信息。</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">1. 資訊收集與使用</p>
+                    <p>為了提供及改善服務，我們可能會收集並使用以下資訊：</p>
+                    <ul>
+                        <li><strong>裝置資訊：</strong> 應用程式功能所需的裝置資訊（如電池電量、作業系統版本、語言設定等）。</li>
+                        <li><strong>用戶內容：</strong> 用戶在聊天或筆記應用程式中自行輸入或傳送的文字與圖片資料。</li>
+                        <li><strong>使用數據：</strong> 崩潰報告及效能分析等不包含個人身分的統計數據。</li>
+                    </ul>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">關於向第三方提供</p>
-                    <p>由於我們不獲取包括個人信息在內的任何信息，因此我們不會向第三方提供信息。</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">2. 第三方服務的使用</p>
+                    <p>本服務部分功能可能會使用以下第三方服務進行資料儲存、用戶認證或分析。這些服務收集的資訊將根據其各自的隱私權政策進行管理。</p>
+                    <ul>
+                        <li><strong>Google Firebase：</strong> 用於資料庫、認證及分析。<br>
+                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google 隱私權政策</a></li>
+                    </ul>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">關於外部服務連結</p>
-                    <p>我們不與外部分析工具或廣告服務合作，也不傳輸信息。</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">3. 用戶生成內容 (UGC)</p>
+                    <p>在具有用戶通訊功能的應用程式中，我們提供監控、檢舉及封鎖功能，以防止不當內容（如攻擊性語言或騷擾）並維護社群健康。</p>
+                    
+                    <p class="font-bold text-gray-500 mb-2 mt-6">4. 免責聲明</p>
+                    <p>對於因使用本服務而造成的任何損害，開發者概不負責。請注意，使用電池監控功能的應用程式可能會消耗電池電力。</p>
                     
                     <p class="font-bold text-gray-500 mb-2 mt-6">聯絡我們</p>
-                    <p>如果您有任何問題或意見，請通過以下電子郵件地址與我們聯繫。<br>
+                    <p>如有任何問題，請透過以下電子郵件聯繫我們。<br>
                     電子郵件: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
+                    <p class="text-right text-gray-400 text-xs mt-4">最後更新：2026年1月2日</p>
                 </div>
 
-                <!-- Korean Content -->
                 <div class="policy-content ko">
-                    <p class="font-bold text-gray-500 mb-2">개인정보 처리방침</p>
-                    <p>우리는 사용자의 개인정보를 존중하며, 안심하고 이용하실 수 있도록 노력하고 있습니다.</p>
+                    <p>본 개인정보 처리방침은 K.SENA가 제공하는 앱 및 웹사이트(이하 "본 서비스")에 적용됩니다.</p>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">정보 수집에 대하여</p>
-                    <p>우리는 사용자의 개인정보를 포함한 어떠한 정보도 수집하지 않습니다.</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">1. 정보 수집 및 이용</p>
+                    <p>우리는 서비스 제공 및 품질 향상을 위해 필요한 최소한의 범위 내에서 다음 정보를 수집 및 이용할 수 있습니다.</p>
+                    <ul>
+                        <li><strong>단말기 정보:</strong> 앱 기능 구현에 필요한 기기 정보 (배터리 잔량, OS 버전, 언어 설정 등).</li>
+                        <li><strong>사용자 콘텐츠:</strong> 채팅 앱 등에서 사용자가 직접 입력하고 전송한 텍스트 및 이미지 데이터.</li>
+                        <li><strong>이용 데이터:</strong> 오류 로그 및 성능 분석 등 개인을 식별하지 않는 통계 데이터.</li>
+                    </ul>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">제3자 제공에 대하여</p>
-                    <p>우리는 개인정보를 포함한 어떠한 정보도 취득하지 않으므로, 제3자에게 정보를 제공하지 않습니다.</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">2. 제3자 서비스 이용</p>
+                    <p>본 서비스의 일부에서는 데이터 저장, 사용자 인증 및 분석을 위해 다음의 제3자 서비스를 이용할 수 있습니다.</p>
+                    <ul>
+                        <li><strong>Google Firebase:</strong> 데이터베이스, 인증, 분석을 위해 사용됩니다.<br>
+                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google 개인정보 처리방침</a></li>
+                    </ul>
                     
-                    <p class="font-bold text-gray-500 mb-2 mt-6">외부 서비스 연동에 대하여</p>
-                    <p>우리는 외부 분석 도구나 광고 서비스 등과 연동하지 않으며, 정보의 전송도 수행하지 않습니다.</p>
+                    <p class="font-bold text-gray-500 mb-2 mt-6">3. 사용자 생성 콘텐츠 (UGC)</p>
+                    <p>사용자 간 커뮤니케이션 기능이 있는 앱에서는 부적절한 콘텐츠(비방, 욕설 등)를 방지하고 건전한 커뮤니티를 유지하기 위해 신고 및 차단 기능을 제공합니다.</p>
+                    
+                    <p class="font-bold text-gray-500 mb-2 mt-6">4. 면책 조항</p>
+                    <p>본 서비스 이용으로 인해 발생한 문제나 손해에 대해 개발자는 원칙적으로 책임을 지지 않습니다. 배터리 모니터링 기능을 사용하는 앱은 특성상 배터리 소모가 발생할 수 있음을 양해 바랍니다.</p>
                     
                     <p class="font-bold text-gray-500 mb-2 mt-6">문의하기</p>
-                    <p>질문이나 의견이 있으시면 아래 이메일 주소로 연락해 주십시오.<br>
+                    <p>질문이 있으시면 아래 이메일 주소로 연락해 주십시오.<br>
                     이메일: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
+                    <p class="text-right text-gray-400 text-xs mt-4">최종 업데이트: 2026년 1월 2일</p>
                 </div>
             </div>
         </div>
@@ -356,7 +405,6 @@
                 app1_desc: "An app that expresses emotions and feelings through traffic signals. A universal design created for those who speak different languages or have difficulty vocalizing.",
                 view_store: "View on App Store",
                 
-                // App 2 (Sena Valentine) settings
                 app3_category: "Digital Art / Alter Ego",
                 app3_desc: "Visit the another side. A portfolio of digital illustrations exploring the boundaries between reality and digital noise.",
                 visit_site: "Visit Website",
