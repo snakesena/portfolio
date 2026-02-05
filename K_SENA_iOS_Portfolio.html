@@ -103,10 +103,6 @@
             transition: opacity 0.3s ease;
         }
         #privacyModal.hidden {
-            pointer-events: none;
-            opacity: 0;
-        }
-        #privacyModal.hidden {
             opacity: 0;
             pointer-events: none;
         }
@@ -128,6 +124,14 @@
         }
         .policy-content li {
             margin-bottom: 0.25rem;
+        }
+        
+        /* アイコン用スタイル */
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+            color: #1d1d1f;
+            margin-bottom: 1rem;
         }
 
     </style>
@@ -180,6 +184,7 @@
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 
+                <!-- App 1: EmotionLights -->
                 <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-center justify-between min-h-[400px] fade-up cursor-pointer">
                     <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pr-12">
                         <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app1_category">Universal Communication</span>
@@ -196,6 +201,58 @@
                     </div>
                 </div>
 
+                <!-- App 2: Quantarium (Puzzle) -->
+                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between min-h-[400px] fade-up cursor-pointer">
+                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pl-12">
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app_quantarium_cat">Puzzle Game</span>
+                        <h4 class="text-4xl font-bold mt-2 mb-4">Quantarium</h4>
+                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app_quantarium_desc">
+                            A puzzle game that unravels the laws of the universe. Beautiful logic woven by numbers and space.
+                        </p>
+                        <div class="mt-6">
+                            <a href="#" class="btn-primary" data-translate="view_store">View on App Store</a>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                        <img src="images/Quantarium.png" alt="Quantarium App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
+                    </div>
+                </div>
+
+                <!-- App 3: UniNumPlace (Sudoku) -->
+                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-center justify-between min-h-[400px] fade-up cursor-pointer">
+                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pr-12">
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app_uninum_cat">Classic Puzzle</span>
+                        <h4 class="text-4xl font-bold mt-2 mb-4">UniNumPlace</h4>
+                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app_uninum_desc">
+                            Sudoku, redefined. The standard number puzzle app, pursuing ultimate readability and usability.
+                        </p>
+                        <div class="mt-6">
+                            <a href="#" class="btn-primary" data-translate="view_store">View on App Store</a>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                        <img src="images/UniNumPlace.png" alt="UniNumPlace App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
+                    </div>
+                </div>
+
+                <!-- App 4: NeuronSociety (Simulation) -->
+                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between min-h-[400px] fade-up cursor-pointer">
+                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pl-12">
+                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app_neuron_cat">Simulation</span>
+                        <h4 class="text-4xl font-bold mt-2 mb-4">NeuronSociety</h4>
+                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app_neuron_desc">
+                            A small society in your pocket. An observation simulation where artificial neurons learn and evolve.
+                        </p>
+                        <div class="mt-6">
+                            <a href="#" class="btn-primary" data-translate="view_store">View on App Store</a>
+                        </div>
+                    </div>
+                    <div class="flex-1 flex justify-center">
+                        <img src="images/NeuronSociety.png" alt="NeuronSociety App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
+                    </div>
+                </div>
+
+                <!-- App 5: Sena Valentine (Art) -->
                 <div class="md:col-span-2 app-card rounded-3xl overflow-hidden relative min-h-[400px] flex items-center bg-black fade-up">
                     <div class="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent z-10"></div>
                     <div class="absolute inset-0 opacity-40 bg-[url('images/MyAvator.png')] bg-cover bg-center"></div>
@@ -217,12 +274,52 @@
         </section>
 
         <section id="philosophy" class="bg-white py-32">
-            <div class="max-w-[980px] mx-auto px-6 text-center">
-                <h3 class="text-4xl md:text-6xl font-bold mb-8 fade-up text-[#1d1d1f]" data-translate="philo_title">Designed for humans.</h3>
-                <p class="text-xl md:text-2xl text-[#86868b] leading-relaxed fade-up" style="transition-delay: 0.1s" data-translate="philo_desc">
-                    We believe that technology should be quiet, helpful, and beautiful. 
-                    Every app is crafted with a focus on privacy, speed, and standard iOS design principles.
-                </p>
+            <div class="max-w-[980px] mx-auto px-6">
+                <div class="text-center max-w-3xl mx-auto mb-20">
+                    <h3 class="text-4xl md:text-6xl font-bold mb-8 fade-up text-[#1d1d1f]" data-translate="philo_title">Designed for humans.</h3>
+                    <p class="text-xl md:text-2xl text-[#86868b] leading-relaxed fade-up" style="transition-delay: 0.1s" data-translate="philo_desc">
+                        We believe that technology should be quiet, helpful, and beautiful. 
+                        Every app is crafted with a focus on privacy, speed, and standard iOS design principles.
+                    </p>
+                </div>
+
+                <!-- Promises Grid: No Ads / No Subs -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20 fade-up" style="transition-delay: 0.2s">
+                    
+                    <!-- No Ads -->
+                    <div class="text-center flex flex-col items-center">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                        </svg>
+                        <h4 class="text-lg font-semibold mb-2" data-translate="promise_ads_title">No Ads. Ever.</h4>
+                        <p class="text-[#86868b] text-sm leading-relaxed" data-translate="promise_ads_desc">
+                            Experience a clean interface without distractions. Your focus belongs to you.
+                        </p>
+                    </div>
+
+                    <!-- No Subscriptions -->
+                    <div class="text-center flex flex-col items-center">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <h4 class="text-lg font-semibold mb-2" data-translate="promise_subs_title">One-Time Purchase.</h4>
+                        <p class="text-[#86868b] text-sm leading-relaxed" data-translate="promise_subs_desc">
+                            Own the app forever with a single purchase. No hidden recurring fees.
+                        </p>
+                    </div>
+
+                    <!-- Privacy -->
+                    <div class="text-center flex flex-col items-center">
+                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                        <h4 class="text-lg font-semibold mb-2" data-translate="promise_privacy_title">Privacy First.</h4>
+                        <p class="text-[#86868b] text-sm leading-relaxed" data-translate="promise_privacy_desc">
+                            Your data stays on your device. We don't track you or sell your information.
+                        </p>
+                    </div>
+
+                </div>
             </div>
         </section>
 
@@ -405,13 +502,34 @@
                 app1_desc: "An app that expresses emotions and feelings through traffic signals. A universal design created for those who speak different languages or have difficulty vocalizing.",
                 view_store: "View on App Store",
                 
+                // New App 1: Quantarium
+                app_quantarium_cat: "Puzzle Game",
+                app_quantarium_desc: "A puzzle game that unravels the laws of the universe. Beautiful logic woven by numbers and space.",
+
+                // New App 2: UniNumPlace
+                app_uninum_cat: "Classic Puzzle",
+                app_uninum_desc: "Sudoku, redefined. The standard number puzzle app, pursuing ultimate readability and usability.",
+
+                // New App 3: NeuronSociety
+                app_neuron_cat: "Simulation",
+                app_neuron_desc: "A small society in your pocket. An observation simulation where artificial neurons learn and evolve.",
+
                 app3_category: "Digital Art / Alter Ego",
                 app3_desc: "Visit the another side. A portfolio of digital illustrations exploring the boundaries between reality and digital noise.",
                 visit_site: "Visit Website",
                 
                 philo_title: "Designed for humans.",
                 philo_desc: "We believe that technology should be quiet, helpful, and beautiful. Every app is crafted with a focus on privacy, speed, and standard iOS design principles.",
-                copyright: "Copyright © 2025 K.SENA. All rights reserved.",
+                
+                // Promises
+                promise_ads_title: "No Ads. Ever.",
+                promise_ads_desc: "Experience a clean interface without distractions. Your focus belongs to you.",
+                promise_subs_title: "One-Time Purchase.",
+                promise_subs_desc: "Own the app forever with a single purchase. No hidden recurring fees.",
+                promise_privacy_title: "Privacy First.",
+                promise_privacy_desc: "Your data stays on your device. We don't track you or sell your information.",
+
+                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
                 privacy_link: "Privacy Policy",
                 contact_link: "Contact",
                 location: "Designed in Japan.",
@@ -430,13 +548,34 @@
                 app1_desc: "感情や気持ちを信号で表せるアプリ。異なる言語や発声が難しい方へ作ったユニバーサルデザインです。",
                 view_store: "App Storeで見る",
                 
+                // New App 1: Quantarium
+                app_quantarium_cat: "パズルゲーム",
+                app_quantarium_desc: "宇宙の法則を解き明かすパズルゲーム。数と空間が織りなす美しいロジック。",
+
+                // New App 2: UniNumPlace
+                app_uninum_cat: "定番パズル",
+                app_uninum_desc: "数独を、再定義する。究極の視認性と操作性を追求した、スタンダードなナンプレアプリ。",
+
+                // New App 3: NeuronSociety
+                app_neuron_cat: "シミュレーション",
+                app_neuron_desc: "ポケットの中の小さな社会。人工ニューロンたちが学習し、進化していく様子を見守る観測シミュレーション。",
+
                 app3_category: "デジタルアート / 別名義",
                 app3_desc: "もう一つの側面へ。現実とデジタルノイズの境界を探求するデジタルイラストレーションのポートフォリオ。",
                 visit_site: "ウェブサイトを見る",
                 
                 philo_title: "人のためのデザイン。",
                 philo_desc: "テクノロジーは静かで、便利で、美しいものであるべきです。すべてのアプリはプライバシー、スピード、iOSのデザイン原則を重視して作られています。",
-                copyright: "Copyright © 2025 K.SENA. All rights reserved.",
+                
+                // Promises
+                promise_ads_title: "広告なし。",
+                promise_ads_desc: "邪魔なもののない、クリーンなインターフェースを体験してください。",
+                promise_subs_title: "買い切り型。",
+                promise_subs_desc: "一度の購入で、ずっとあなたのもの。隠れた継続課金はありません。",
+                promise_privacy_title: "プライバシー重視。",
+                promise_privacy_desc: "データはあなたのデバイスの中に。追跡や情報の販売は一切行いません。",
+
+                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
                 privacy_link: "プライバシーポリシー",
                 contact_link: "お問い合わせ",
                 location: "Designed in Japan.",
@@ -455,13 +594,34 @@
                 app1_desc: "透過信號燈表達情緒與感受的應用程式。專為語言不同或難以發聲的人士設計的通用設計。",
                 view_store: "在 App Store 查看",
                 
+                // New App 1: Quantarium
+                app_quantarium_cat: "益智遊戲",
+                app_quantarium_desc: "解開宇宙法則的益智遊戲。由數字與空間交織而成的美麗邏輯。",
+
+                // New App 2: UniNumPlace
+                app_uninum_cat: "經典益智",
+                app_uninum_desc: "重新定義數獨。追求極致可視性與操作性的標準填字遊戲。",
+
+                // New App 3: NeuronSociety
+                app_neuron_cat: "模擬遊戲",
+                app_neuron_desc: "口袋裡的小小社會。觀察人工神經元學習與進化的模擬遊戲。",
+
                 app3_category: "數位藝術 / 另一個自我",
                 app3_desc: "造訪另一面。探索現實與數位噪聲邊界的數位插畫作品集。",
                 visit_site: "訪問網站",
                 
                 philo_title: "以人為本的設計。",
                 philo_desc: "我們相信科技應該是安靜、有益且美麗的。每個應用程式都注重隱私、速度和標準 iOS 設計原則。",
-                copyright: "Copyright © 2025 K.SENA. All rights reserved.",
+                
+                // Promises
+                promise_ads_title: "絕無廣告。",
+                promise_ads_desc: "體驗沒有干擾的乾淨介面。您的專注力只屬於您。",
+                promise_subs_title: "一次性買斷。",
+                promise_subs_desc: "只需支付一次，永久擁有。沒有隱藏的訂閱費用。",
+                promise_privacy_title: "隱私至上。",
+                promise_privacy_desc: "您的數據保留在裝置上。我們不會追蹤您或出售您的資訊。",
+
+                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
                 privacy_link: "隱私權政策",
                 contact_link: "聯絡我們",
                 location: "Designed in Japan.",
@@ -480,13 +640,34 @@
                 app1_desc: "감정과 기분을 신호등으로 표현할 수 있는 앱. 언어가 다르거나 발화가 어려운 분들을 위해 만든 유니버설 디자인입니다.",
                 view_store: "App Store에서 보기",
                 
+                // New App 1: Quantarium
+                app_quantarium_cat: "퍼즐 게임",
+                app_quantarium_desc: "우주의 법칙을 풀어나가는 퍼즐 게임. 숫자와 공간이 자아내는 아름다운 로직.",
+
+                // New App 2: UniNumPlace
+                app_uninum_cat: "클래식 퍼즐",
+                app_uninum_desc: "스도쿠의 재정의. 최고의 가시성과 조작성을 추구한 스탠다드 넘버 플레이스 앱.",
+
+                // New App 3: NeuronSociety
+                app_neuron_cat: "시뮬레이션",
+                app_neuron_desc: "주머니 속의 작은 사회. 인공 뉴런들이 학습하고 진화하는 모습을 지켜보는 관측 시뮬레이션.",
+
                 app3_category: "디지털 아트 / 또 다른 자아",
                 app3_desc: "또 다른 이면을 방문하세요. 현실과 디지털 노이즈 사이의 경계를 탐구하는 디지털 일러스트레이션 포트폴리오.",
                 visit_site: "웹사이트 방문",
                 
                 philo_title: "사람을 위한 디자인.",
                 philo_desc: "우리는 기술이 조용하고, 도움이 되며, 아름다워야 한다고 믿습니다. 모든 앱은 개인정보 보호, 속도, iOS 디자인 원칙에 중점을 두고 제작됩니다.",
-                copyright: "Copyright © 2025 K.SENA. All rights reserved.",
+                
+                // Promises
+                promise_ads_title: "광고 없음.",
+                promise_ads_desc: "방해 요소 없는 깨끗한 인터페이스를 경험하세요. 당신의 집중은 오직 당신의 것입니다.",
+                promise_subs_title: "평생 소장.",
+                promise_subs_desc: "한 번의 구매로 평생 소유하세요. 숨겨진 정기 결제는 없습니다.",
+                promise_privacy_title: "개인정보 보호 최우선.",
+                promise_privacy_desc: "데이터는 당신의 기기에만 머무릅니다. 우리는 당신을 추적하거나 정보를 판매하지 않습니다.",
+
+                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
                 privacy_link: "개인정보 처리방침",
                 contact_link: "문의하기",
                 location: "Designed in Japan.",
