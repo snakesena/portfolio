@@ -1,752 +1,719 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>K.SENA | iOS Application Developer</title>
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+JP:wght@300;400;500;700&family=Noto+Sans+TC:wght@300;400;500;700&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
-    
-    <style>
-        /* Apple風のデザインシステム */
-        :root {
-            --bg-body: #f5f5f7;
-            --text-primary: #1d1d1f;
-            --text-secondary: #86868b;
-            --link-blue: #0066cc;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sena Kondo — 個人開発のiOSアプリ | Indie iOS app developer</title>
+<meta name="description" content="日本の個人開発者 Sena Kondo のiOSアプリ一覧。Quantarium、Liverb、Tsutaeru-Board、CMYemu など22本。広告なし・買い切り・データは端末の中に。">
+<link rel="canonical" href="https://snakesena.github.io/portfolio/K_SENA_iOS_Portfolio.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Sena Kondo — Indie iOS apps from Japan">
+<meta property="og:description" content="22 small iOS apps by one developer. No ads, pay once, your data stays on your device.">
+<meta property="og:url" content="https://snakesena.github.io/portfolio/K_SENA_iOS_Portfolio.html">
+<meta name="twitter:card" content="summary">
+<meta name="apple-itunes-app" content="app-id=6752717188">
 
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-primary);
-            -webkit-font-smoothing: antialiased;
-            overflow-x: hidden;
-        }
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://snakesena.github.io/portfolio/#person",
+      "name": "Sena Kondo",
+      "alternateName": ["K.SENA", "Sena Valentine"],
+      "jobTitle": "Indie iOS app developer",
+      "url": "https://snakesena.github.io/portfolio/K_SENA_iOS_Portfolio.html",
+      "sameAs": [
+        "https://apps.apple.com/jp/developer/sena-kondo/id1807240487",
+        "https://snakesena.github.io/portfolio/"
+      ]
+    },
+    {
+      "@type": "ItemList",
+      "name": "iOS apps by Sena Kondo",
+      "itemListElement": [
+        {"@type":"ListItem","position":1,"item":{"@type":"SoftwareApplication","name":"Quantarium","operatingSystem":"iOS","applicationCategory":"GameApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"url":"https://apps.apple.com/jp/app/id6756206151","author":{"@id":"https://snakesena.github.io/portfolio/#person"}}},
+        {"@type":"ListItem","position":2,"item":{"@type":"SoftwareApplication","name":"Liverb","operatingSystem":"iOS","applicationCategory":"EntertainmentApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"url":"https://apps.apple.com/jp/app/id6761419550","author":{"@id":"https://snakesena.github.io/portfolio/#person"}}},
+        {"@type":"ListItem","position":3,"item":{"@type":"SoftwareApplication","name":"Tsutaeru-Board","operatingSystem":"iOS","applicationCategory":"LifestyleApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"url":"https://apps.apple.com/jp/app/id6835705644","author":{"@id":"https://snakesena.github.io/portfolio/#person"}}},
+        {"@type":"ListItem","position":4,"item":{"@type":"SoftwareApplication","name":"CMYemu","operatingSystem":"iOS","applicationCategory":"DesignApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"JPY"},"url":"https://apps.apple.com/jp/app/id6835673748","author":{"@id":"https://snakesena.github.io/portfolio/#person"}}}
+      ]
+    }
+  ]
+}
+</script>
 
-        /* 言語ごとのフォント適用 */
-        html[lang="ja"] body { font-family: 'Inter', 'Noto Sans JP', sans-serif; }
-        html[lang="zh-TW"] body { font-family: 'Inter', 'Noto Sans TC', sans-serif; }
-        html[lang="ko"] body { font-family: 'Inter', 'Noto Sans KR', sans-serif; }
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ffffff;
+    --bg-2: #f6f6f4;
+    --ink: #161616;
+    --ink-2: #66655f;
+    --ink-3: #a5a49e;
+    --rule: rgba(22,22,22,.1);
+    --accent: #4a55d6;
+    --glass: rgba(255,255,255,.62);
+    --glass-edge: rgba(255,255,255,.8);
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --sans: 'Noto Sans JP', system-ui, sans-serif;
+    --spring: cubic-bezier(.34,1.4,.5,1);
+    --ease: cubic-bezier(.2,.8,.2,1);
+    --panel: rgba(255,255,255,.72);
+    --bubble: rgba(255,255,255,.92);
+    --on-ink: #ffffff;
+    --glow: .24;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e0e10; --bg-2: #18181b; --ink: #ececea; --ink-2: #9b9a94; --ink-3: #64635e;
+      --rule: rgba(255,255,255,.09); --accent: #9aa4ff;
+      --glass: rgba(22,22,26,.55); --glass-edge: rgba(255,255,255,.08);
+      --panel: rgba(22,22,26,.7); --bubble: rgba(40,40,46,.9); --on-ink: #0e0e10; --glow: .38; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e0e10; --bg-2: #18181b; --ink: #ececea; --ink-2: #9b9a94; --ink-3: #64635e;
+    --rule: rgba(255,255,255,.09); --accent: #9aa4ff;
+    --glass: rgba(22,22,26,.55); --glass-edge: rgba(255,255,255,.08);
+    --panel: rgba(22,22,26,.7); --bubble: rgba(40,40,46,.9); --on-ink: #0e0e10; --glow: .38; color-scheme: dark;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--bg); transition: background .4s, color .4s; color: var(--ink); font-family: var(--sans); line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+  a { color: inherit; text-decoration: none; }
+  button { font: inherit; color: inherit; }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 24px; }
+  .mono { font-family: var(--mono); font-size: 12px; color: var(--ink-2); font-variant-numeric: tabular-nums; }
 
-        /* アニメーション定義 */
-        .fade-up {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 1s cubic-bezier(0.2, 0.8, 0.2, 1), transform 1s cubic-bezier(0.2, 0.8, 0.2, 1);
-        }
-        
-        .fade-up.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
+  /* 背景：ガラスが映り込む素材として、ぼんやりした色面をゆっくり漂わせる（1画面1か所） */
+  .field { position: fixed; inset: 0; z-index: -1; overflow: hidden; pointer-events: none; }
+  /* 原色（赤・黄・青）の3つの光が、ゆっくり位置を入れ替えながら漂う */
+  /* ゲーミングPCのRGBライティングのように、全体の色相が約90秒で一周する */
+  .field { animation: hue 90s linear infinite; }
+  @keyframes hue { to { filter: hue-rotate(360deg); } }
+  .field i { position: absolute; width: 44vmax; height: 44vmax; border-radius: 50%; filter: blur(90px); opacity: var(--glow); will-change: transform; transition: opacity .6s; }
+  .field i:nth-child(1) { background: #ff0080; top: -16vmax; right: -10vmax; animation: driftA 26s ease-in-out infinite alternate; }
+  .field i:nth-child(2) { background: #7a00ff; top: 30vh; left: 30vw; animation: driftB 32s ease-in-out infinite alternate; }
+  .field i:nth-child(3) { background: #00e5ff; bottom: -20vmax; left: -14vmax; animation: driftC 38s ease-in-out infinite alternate; }
+  @keyframes driftA { 50% { transform: translate(-18vw, 14vh) scale(1.15); } 100% { transform: translate(-6vw, 30vh) scale(.9); } }
+  @keyframes driftB { 50% { transform: translate(22vw, -20vh) scale(.85); } 100% { transform: translate(-24vw, 10vh) scale(1.1); } }
+  @keyframes driftC { 50% { transform: translate(20vw, -10vh) scale(1.1); } 100% { transform: translate(34vw, -26vh) scale(.95); } }
 
-        /* ヒーローセクションの特別なアニメーション */
-        .hero-anim {
-            opacity: 0;
-            transform: scale(0.98) translateY(20px);
-            animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
-        }
+  /* header (glass) */
+  header { position: fixed; top: 12px; left: 0; right: 0; z-index: 40; }
+  .bar { max-width: 1080px; margin: 0 auto; padding: 0 12px; }
+  .bar > div { display: flex; justify-content: space-between; align-items: center; height: 52px; padding: 0 12px 0 20px; border-radius: 14px;
+    background: var(--glass); backdrop-filter: blur(20px) saturate(160%); -webkit-backdrop-filter: blur(20px) saturate(160%);
+    border: 1px solid var(--glass-edge); box-shadow: 0 1px 0 var(--rule), 0 8px 24px rgba(0,0,0,.04); }
+  .logo { font-weight: 500; font-size: 15px; }
+  nav { display: flex; gap: 20px; align-items: center; }
+  nav > a { font-size: 13px; color: var(--ink-2); transition: color .15s; }
+  nav > a:hover { color: var(--ink); }
+  .langs { display: flex; gap: 2px; padding-left: 12px; border-left: 1px solid var(--rule); }
+  .langs button { font: 500 11px var(--mono); color: var(--ink-3); background: none; border: 0; border-radius: 6px; padding: 4px 6px; cursor: pointer; }
+  .langs button[aria-pressed="true"] { color: var(--ink); background: rgba(0,0,0,.05); }
+  @media (max-width: 680px) { nav > a { display: none; } .langs { border: 0; } }
 
-        @keyframes heroReveal {
-            to { opacity: 1; transform: scale(1) translateY(0); }
-        }
+  .theme { width: 28px; height: 28px; border: 0; border-radius: 8px; background: none; color: var(--ink-2); cursor: pointer; display: grid; place-items: center; margin-left: 4px; transition: background .15s, color .15s; }
+  .theme:hover { background: rgba(127,127,127,.12); color: var(--ink); }
+  .theme svg { width: 16px; height: 16px; transition: transform .5s var(--spring); }
+  .theme:active svg { transform: rotate(40deg) scale(.85); }
+  .theme .moon { display: none; }
+  :root[data-dark] .theme .sun { display: none; } :root[data-dark] .theme .moon { display: block; }
 
-        /* ガラスモーフィズムナビゲーション */
-        .glass-nav {
-            background-color: rgba(255, 255, 255, 0.8);
-            backdrop-filter: saturate(180%) blur(20px);
-            -webkit-backdrop-filter: saturate(180%) blur(20px);
-            border-bottom: 1px solid rgba(0,0,0,0.05);
-        }
+  /* new releases */
+  .news { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+  .news a { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; padding: 16px 16px 16px 0; transition: opacity .2s; }
+  .news a + a { padding-left: 16px; border-left: 1px solid var(--rule); }
+  .news a:hover h3 { color: var(--accent); }
+  .news .icon { width: 44px; height: 44px; border-radius: 10px; }
+  .news h3 { font-size: 15px; font-weight: 500; line-height: 1.3; transition: color .15s; }
+  .news .mono { font-size: 11px; }
+  @media (max-width: 760px) { .news { grid-template-columns: 1fr; } .news a + a { padding-left: 0; border-left: 0; border-top: 1px solid var(--rule); } }
 
-        /* カードのホバーエフェクト */
-        .app-card {
-            background: #fff;
-            transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
-        }
-        .app-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.08);
-        }
-        
-        /* ボタン */
-        .btn-primary {
-            background-color: #0071e3;
-            color: white;
-            padding: 8px 16px;
-            border-radius: 980px;
-            font-size: 12px;
-            font-weight: 500;
-            transition: background-color 0.2s;
-        }
-        .btn-primary:hover {
-            background-color: #0077ed;
-        }
+  /* hero */
+  .hero { padding: 168px 0 96px; }
+  .hero .mono { display: block; margin-bottom: 24px; }
+  .hero h1 { font-size: clamp(36px, 6vw, 68px); font-weight: 500; line-height: 1.15; letter-spacing: -.015em; max-width: 14em; }
+  .hero h1 span { display: inline-block; opacity: 0; transform: translateY(.4em); animation: rise .9s var(--ease) forwards; }
+  .hero h1 span:nth-child(2) { animation-delay: .08s; } .hero h1 span:nth-child(3) { animation-delay: .16s; color: var(--ink-3); }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+  .hero p { margin-top: 28px; max-width: 36em; color: var(--ink-2); font-size: 17px; }
+  .counts { display: flex; gap: 40px; margin-top: 48px; padding-top: 20px; border-top: 1px solid var(--rule); flex-wrap: wrap; }
+  .counts strong { display: block; font: 500 28px var(--mono); }
+  .counts span { font-size: 13px; color: var(--ink-2); }
 
-        /* 言語スイッチャー */
-        .lang-btn {
-            cursor: pointer;
-            transition: color 0.2s;
-        }
-        .lang-btn.active {
-            font-weight: 600;
-            color: #1d1d1f;
-        }
+  /* featured */
+  .sec-head { display: flex; justify-content: space-between; align-items: baseline; gap: 16px; padding: 16px 0; border-top: 1px solid var(--ink); margin-top: 48px; flex-wrap: wrap; }
+  .sec-head h2 { font-size: 15px; font-weight: 500; }
+  .featured { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; margin-top: 8px; }
+  .feat { position: relative; padding: 28px; border-radius: 16px; background: var(--bg-2); display: grid; grid-template-columns: 96px 1fr; gap: 20px; align-items: start; overflow: hidden;
+    transition: transform .5s var(--ease), box-shadow .5s var(--ease); }
+  .feat:hover { transform: translateY(-3px); box-shadow: 0 16px 32px rgba(0,0,0,.06); }
+  .feat .icon { width: 96px; height: 96px; border-radius: 22px; }
+  .feat h3 { font-size: 22px; font-weight: 500; line-height: 1.3; margin-top: 4px; }
+  .feat p { color: var(--ink-2); font-size: 14px; margin-top: 8px; }
+  .feat .row { display: flex; justify-content: space-between; align-items: center; margin-top: 16px; }
+  .store { display: inline-flex; gap: 6px; align-items: center; font-size: 13px; padding: 6px 12px; border-radius: 8px; border: 1px solid var(--ink); transition: background .15s, color .15s; }
+  .store:hover { background: var(--ink); color: var(--on-ink); }
+  .store svg { width: 12px; height: 12px; }
+  @media (max-width: 760px) { .featured { grid-template-columns: 1fr; } .feat { grid-template-columns: 72px 1fr; padding: 20px; } .feat .icon { width: 72px; height: 72px; border-radius: 16px; } }
 
-        /* モーダル */
-        #privacyModal {
-            transition: opacity 0.3s ease;
-        }
-        #privacyModal.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-        #privacyModal:not(.hidden) {
-            opacity: 1;
-            pointer-events: auto;
-        }
-        
-        /* プライバシーポリシーの本文表示制御 */
-        .policy-content { display: none; }
-        .policy-content.active { display: block; }
+  .icon { background: var(--bg-2); box-shadow: 0 0 0 1px var(--rule); object-fit: cover; display: block; }
 
-        /* ポリシー内のリストスタイル */
-        .policy-content ul {
-            list-style-type: disc;
-            padding-left: 1.5rem;
-            margin-bottom: 1rem;
-            color: #4b5563; /* text-gray-600 */
-        }
-        .policy-content li {
-            margin-bottom: 0.25rem;
-        }
-        
-        /* アイコン用スタイル */
-        .feature-icon {
-            width: 48px;
-            height: 48px;
-            color: #1d1d1f;
-            margin-bottom: 1rem;
-        }
+  /* all apps */
+  .filters { display: flex; gap: 4px; flex-wrap: wrap; }
+  .filters button { font-size: 12px; padding: 4px 10px; border-radius: 6px; border: 1px solid transparent; background: none; color: var(--ink-2); cursor: pointer; transition: all .15s; }
+  .filters button[aria-pressed="true"] { color: var(--ink); border-color: var(--rule); background: var(--bg-2); }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); border-left: 1px solid var(--rule); border-top: 1px solid var(--rule); margin-top: 8px; }
+  .cell { display: grid; grid-template-columns: 52px 1fr; gap: 14px; padding: 18px; border-right: 1px solid var(--rule); border-bottom: 1px solid var(--rule); background: var(--bg);
+    transition: background .2s, opacity .3s, transform .3s var(--ease); }
+  .cell:hover { background: var(--bg-2); }
+  .cell .icon { width: 52px; height: 52px; border-radius: 12px; }
+  .cell h3 { font-size: 15px; font-weight: 500; line-height: 1.35; }
+  .cell p { font-size: 12px; color: var(--ink-2); margin-top: 2px; line-height: 1.5; }
+  .cell .mono { font-size: 11px; color: var(--ink-3); margin-top: 6px; display: block; }
+  .cell.hide { display: none; }
 
-    </style>
+  /* alter ego */
+  .alter { border: 1px solid var(--rule); margin-top: 96px; display: grid; grid-template-columns: 1.1fr 1fr; gap: 0; border-radius: 16px; overflow: hidden; background: #141414; color: #ecebe6; }
+  .alter .txt { padding: 48px; display: flex; flex-direction: column; justify-content: space-between; gap: 40px; }
+  .alter .mono { color: #8a8981; }
+  .alter h3 { font-size: 30px; font-weight: 500; margin-top: 8px; }
+  .alter p { color: #a9a8a1; margin-top: 12px; font-size: 15px; }
+  .alter a { font-size: 14px; border-bottom: 1px solid #555; padding-bottom: 2px; align-self: flex-start; }
+  .alter a:hover { border-color: #fff; }
+  .alter .img { min-height: 300px; background: #222 url('images/MyAvator.png') center/cover; }
+  @media (max-width: 760px) { .alter { grid-template-columns: 1fr; } .alter .txt { padding: 28px 24px; } }
+
+  /* principles */
+  .principles { display: grid; grid-template-columns: repeat(3, 1fr); }
+  .principles div { padding: 20px 24px 40px 0; }
+  .principles div + div { padding-left: 24px; border-left: 1px solid var(--rule); }
+  .principles h4 { font-size: 17px; font-weight: 500; margin: 6px 0; }
+  .principles p { font-size: 14px; color: var(--ink-2); }
+  .principles .more { display: inline-block; margin-top: 10px; font-size: 13px; color: var(--ink); border-bottom: 1px solid var(--rule); transition: border-color .15s; }
+  .principles .more:hover { border-color: var(--ink); }
+  @media (max-width: 760px) { .principles { grid-template-columns: 1fr; } .principles div, .principles div + div { padding: 16px 0; border-left: 0; border-top: 1px solid var(--rule); } }
+
+  footer { margin-top: 96px; border-top: 1px solid var(--rule); padding: 24px 0 96px; }
+  footer .wrap { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--ink-2); }
+  footer .links { display: flex; gap: 20px; flex-wrap: wrap; }
+  footer a:hover, footer button:hover { color: var(--ink); }
+  footer button { background: none; border: 0; cursor: pointer; color: var(--ink-2); }
+
+  .reveal { opacity: 0; transform: translateY(14px); transition: opacity .7s var(--ease), transform .7s var(--ease); }
+  .reveal.in { opacity: 1; transform: none; }
+
+  /* ===== chat (small, glass, the one place motion is allowed to be lavish) ===== */
+  .chat-btn { position: fixed; right: 20px; bottom: 20px; z-index: 60; width: 48px; height: 48px; border-radius: 50%; border: 1px solid var(--glass-edge); cursor: pointer;
+    background: var(--glass); backdrop-filter: blur(16px) saturate(160%); -webkit-backdrop-filter: blur(16px) saturate(160%);
+    box-shadow: 0 6px 20px rgba(0,0,0,.1); display: grid; place-items: center; transition: transform .4s var(--spring); }
+  .chat-btn:hover { transform: scale(1.06); }
+  .chat-btn:active { transform: scale(.94); }
+  .chat-btn svg { width: 20px; height: 20px; position: absolute; transition: transform .45s var(--spring), opacity .25s; }
+  .chat-btn .x { opacity: 0; transform: rotate(-90deg) scale(.5); }
+  .chat-open .chat-btn .b { opacity: 0; transform: rotate(90deg) scale(.5); }
+  .chat-open .chat-btn .x { opacity: 1; transform: none; }
+  .chat-btn .dot { position: absolute; top: 9px; right: 9px; width: 7px; height: 7px; border-radius: 50%; background: var(--accent); transition: transform .3s; }
+  .chat-open .chat-btn .dot, .seen .chat-btn .dot { transform: scale(0); }
+
+  .chat { position: fixed; right: 20px; bottom: 80px; z-index: 59; width: 300px; height: 380px; max-height: calc(100vh - 120px); border-radius: 18px; overflow: hidden;
+    display: flex; flex-direction: column;
+    background: var(--panel); backdrop-filter: blur(24px) saturate(170%); -webkit-backdrop-filter: blur(24px) saturate(170%);
+    border: 1px solid var(--glass-edge); box-shadow: 0 24px 48px rgba(0,0,0,.12), 0 2px 6px rgba(0,0,0,.05);
+    transform-origin: calc(100% - 24px) calc(100% + 36px);
+    opacity: 0; transform: scale(.2) translateY(20px); filter: blur(6px); pointer-events: none;
+    clip-path: circle(0% at calc(100% - 24px) 100%);
+    transition: transform .6s var(--spring), opacity .3s, filter .4s, clip-path .55s var(--ease); }
+  .chat-open .chat { opacity: 1; transform: none; filter: none; pointer-events: auto; clip-path: circle(150% at calc(100% - 24px) 100%); }
+  .chat-head { padding: 14px 16px 10px; border-bottom: 1px solid var(--rule); display: flex; align-items: center; gap: 10px; }
+  .chat-head .av { width: 26px; height: 26px; border-radius: 8px; background: var(--ink); color: var(--on-ink); font: 500 11px var(--mono); display: grid; place-items: center; }
+  .chat-head b { font-weight: 500; font-size: 13px; display: block; line-height: 1.2; }
+  .chat-head span { font-size: 11px; color: var(--ink-2); }
+  .msgs { flex: 1; overflow-y: auto; padding: 14px; display: flex; flex-direction: column; gap: 8px; scroll-behavior: smooth; }
+  .m { max-width: 85%; font-size: 13px; line-height: 1.55; padding: 8px 12px; border-radius: 14px; transform-origin: bottom left; animation: pop .5s var(--spring) both; }
+  .m.bot { background: var(--bubble); box-shadow: 0 0 0 1px var(--rule); border-bottom-left-radius: 4px; }
+  .m.me { align-self: flex-end; background: var(--ink); color: var(--on-ink); border-bottom-right-radius: 4px; transform-origin: bottom right; }
+  .m a { color: var(--accent); }
+  .m.me a { color: var(--on-ink); }
+  @keyframes pop { from { opacity: 0; transform: scale(.6) translateY(10px); filter: blur(4px); } to { opacity: 1; transform: none; filter: none; } }
+  .hit { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: center; padding: 6px 0; color: var(--ink) !important; }
+  .hit + .hit { border-top: 1px solid var(--rule); }
+  .hit img { width: 28px; height: 28px; border-radius: 7px; background: var(--bg-2); }
+  .hit b { font-weight: 500; font-size: 13px; }
+  .hit small { font: 11px var(--mono); color: var(--ink-2); }
+  .hit:hover b { color: var(--accent); }
+  .m.bot.wide { width: 85%; }
+  .typing { display: inline-flex; gap: 4px; padding: 11px 12px; }
+  .typing i { width: 5px; height: 5px; border-radius: 50%; background: var(--ink-3); animation: bob 1s infinite ease-in-out; }
+  .typing i:nth-child(2) { animation-delay: .15s; } .typing i:nth-child(3) { animation-delay: .3s; }
+  @keyframes bob { 0%,60%,100% { transform: none; opacity: .5; } 30% { transform: translateY(-4px); opacity: 1; } }
+  .chips { display: flex; gap: 6px; flex-wrap: wrap; padding: 0 14px 10px; }
+  .chips button { font-size: 11px; padding: 4px 9px; border-radius: 8px; border: 1px solid var(--rule); background: var(--bubble); color: var(--ink); cursor: pointer; animation: pop .5s var(--spring) both; transition: background .15s; }
+  .chips button:hover { border-color: var(--ink-3); }
+  .chat form { display: flex; gap: 6px; padding: 10px; border-top: 1px solid var(--rule); }
+  .chat input { flex: 1; min-width: 0; font: inherit; font-size: 13px; border: 1px solid var(--rule); border-radius: 10px; padding: 7px 10px; background: var(--bubble); color: var(--ink); outline: none; transition: border-color .15s; }
+  .chat input:focus { border-color: var(--ink-3); }
+  .chat form button { width: 34px; border-radius: 10px; border: 0; background: var(--ink); color: var(--on-ink); cursor: pointer; display: grid; place-items: center; transition: transform .3s var(--spring); }
+  .chat form button:active { transform: scale(.88); }
+  .chat form svg { width: 14px; height: 14px; }
+  @media (max-width: 420px) { .chat { right: 12px; left: 12px; width: auto; } .chat-btn { right: 12px; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    .reveal, .hero h1 span { opacity: 1; transform: none; }
+  }
+</style>
 </head>
 <body>
+<div class="field" aria-hidden="true"><i></i><i></i><i></i></div>
 
-    <nav class="glass-nav fixed top-0 w-full z-50 h-12 flex items-center justify-center">
-        <div class="max-w-[980px] w-full px-6 flex justify-between items-center text-xs font-light">
-            <a href="#" class="text-lg font-semibold tracking-tight text-[#1d1d1f]">K.SENA</a>
-            
-            <div class="flex items-center gap-6">
-                <div class="space-x-6 text-[#1d1d1f]/80 hidden md:flex">
-                    <a href="#apps" class="hover:text-black transition-colors" data-translate="nav_apps">Apps</a>
-                    <a href="#philosophy" class="hover:text-black transition-colors" data-translate="nav_philosophy">Philosophy</a>
-                    <a href="#contact" class="hover:text-black transition-colors" data-translate="nav_contact">Contact</a>
-                </div>
-                
-                <div class="flex space-x-2 text-[#86868b] border-l border-gray-300 pl-4 ml-2">
-                    <span class="lang-btn active" onclick="switchLang('en')">EN</span>
-                    <span class="lang-btn" onclick="switchLang('ja')">JP</span>
-                    <span class="lang-btn" onclick="switchLang('zh-TW')">CHT</span>
-                    <span class="lang-btn" onclick="switchLang('ko')">KO</span>
-                </div>
-            </div>
-        </div>
+<header>
+  <div class="bar"><div>
+    <a href="#" class="logo">Sena Kondo</a>
+    <nav>
+      <a href="#apps" data-t="nav_apps">アプリ</a>
+      <a href="#art" data-t="nav_art">イラスト</a>
+      <a href="#contact" data-t="nav_contact">連絡先</a>
+      <div class="langs">
+        <button data-lang="ja" aria-pressed="true">JP</button>
+        <button data-lang="en">EN</button>
+        <button data-lang="zh-TW">繁</button>
+        <button data-lang="ko">KO</button>
+      </div>
+      <button class="theme" id="themeBtn" aria-label="Toggle dark mode">
+        <svg class="sun" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="3"/><path d="M8 1.5v1.5M8 13v1.5M1.5 8H3M13 8h1.5M3.4 3.4l1 1M11.6 11.6l1 1M3.4 12.6l1-1M11.6 4.4l1-1"/></svg>
+        <svg class="moon" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M13.5 9.5A5.5 5.5 0 016.5 2.5a5.5 5.5 0 107 7z"/></svg>
+      </button>
     </nav>
+  </div></div>
+</header>
 
-    <main>
-        <section class="min-h-[90vh] flex flex-col items-center justify-center text-center px-6 pt-20">
-            <div class="hero-anim">
-                <h2 class="text-[#f56300] font-medium text-xl mb-4 tracking-wide" data-translate="hero_subtitle">Developer Portfolio</h2>
-                <h1 class="text-4xl md:text-7xl font-bold tracking-tight mb-6 text-[#1d1d1f] leading-tight" data-translate="hero_title">
-                    Simplicity.<br>In every touch.
-                </h1>
-                <p class="text-lg md:text-2xl text-[#86868b] max-w-2xl mx-auto font-medium" data-translate="hero_desc">
-                    Designing intuitive iOS experiences that blend seamlessly into your life.
-                </p>
-                
-                <div class="mt-10 flex gap-4 justify-center">
-                    <a href="#apps" class="text-[#0066cc] hover:underline text-lg flex items-center gap-1 group">
-                        <span data-translate="hero_link">See the apps</span>
-                        <span class="group-hover:translate-x-1 transition-transform">›</span>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section id="apps" class="max-w-[1200px] mx-auto px-6 py-24">
-            <h3 class="text-3xl md:text-4xl font-bold mb-16 text-center fade-up" data-translate="apps_header">Crafted for iPhone.</h3>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                
-                <!-- App 1: EmotionLights -->
-                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-center justify-between min-h-[400px] fade-up cursor-pointer">
-                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pr-12">
-                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app1_category">Universal Communication</span>
-                        <h4 class="text-4xl font-bold mt-2 mb-4">EmotionLights</h4>
-                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app1_desc">
-                            An app that expresses emotions and feelings through traffic signals. A universal design created for those who speak different languages or have difficulty vocalizing.
-                        </p>
-                        <div class="mt-6">
-                            <a href="https://apps.apple.com/jp/app/emotionlights/id6752717188" target="_blank" class="btn-primary" data-translate="view_store">View on App Store</a>
-                        </div>
-                    </div>
-                    <div class="flex-1 flex justify-center">
-                        <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ed/1d/16/ed1d164a-a0a2-8d73-3d5b-acd89345d408/Placeholder.mill/400x400bb-75.webp" alt="EmotionLights App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
-                    </div>
-                </div>
-
-                <!-- App 2: Quantarium (Puzzle) -->
-                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between min-h-[400px] fade-up cursor-pointer">
-                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pl-12">
-                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app_quantarium_cat">Puzzle Game</span>
-                        <h4 class="text-4xl font-bold mt-2 mb-4">Quantarium</h4>
-                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app_quantarium_desc">
-                            A puzzle game that unravels the laws of the universe. Beautiful logic woven by numbers and space.
-                        </p>
-                        <div class="mt-6">
-                            <a href="#" class="btn-primary" data-translate="view_store">View on App Store</a>
-                        </div>
-                    </div>
-                    <div class="flex-1 flex justify-center">
-                        <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bc/ae/b5/bcaeb5ca-ddf5-5c4f-866e-d7b5eaa931e5/Placeholder.mill/400x400bb-75.webp" alt="Quantarium App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
-                    </div>
-                </div>
-
-                <!-- App 3: UniNumPlace (Sudoku) -->
-                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row items-center justify-between min-h-[400px] fade-up cursor-pointer">
-                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pr-12">
-                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app_uninum_cat">Classic Puzzle</span>
-                        <h4 class="text-4xl font-bold mt-2 mb-4">UniNumPlace</h4>
-                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app_uninum_desc">
-                            Sudoku, redefined. A simple Sudoku app pursuing sound and visuals.
-                        </p>
-                        <div class="mt-6">
-                            <a href="#" class="btn-primary" data-translate="view_store">View on App Store</a>
-                        </div>
-                    </div>
-                    <div class="flex-1 flex justify-center">
-                        <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/65/42/30/654230da-9ce6-428a-4ae0-15a252a2c315/Placeholder.mill/400x400bb-75.webp" alt="UniNumPlace App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
-                    </div>
-                </div>
-
-                <!-- App 4: NeuronSociety (Simulation) -->
-                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden p-8 md:p-12 flex flex-col md:flex-row-reverse items-center justify-between min-h-[400px] fade-up cursor-pointer">
-                    <div class="flex-1 max-w-lg mb-8 md:mb-0 md:pl-12">
-                        <span class="text-xs font-bold text-gray-500 uppercase tracking-wider" data-translate="app_neuron_cat">Simulation</span>
-                        <h4 class="text-4xl font-bold mt-2 mb-4">NeuronSociety</h4>
-                        <p class="text-lg text-gray-500 leading-relaxed mb-6" data-translate="app_neuron_desc">
-                            A small society in your pocket. An observation simulation where artificial neurons act with their own will.
-                        </p>
-                        <div class="mt-6">
-                            <a href="#" class="btn-primary" data-translate="view_store">View on App Store</a>
-                        </div>
-                    </div>
-                    <div class="flex-1 flex justify-center">
-                        <img src="https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c1/c5/88/c1c588d4-067e-338b-97f7-77dc53a87bd0/Placeholder.mill/400x400bb-75.webp" alt="NeuronSociety App Icon" class="w-48 h-48 md:w-64 md:h-64 object-contain rounded-[2.5rem] shadow-2xl transition-transform hover:scale-105">
-                    </div>
-                </div>
-
-                <!-- App 5: Sena Valentine (Art) -->
-                <div class="md:col-span-2 app-card rounded-3xl overflow-hidden relative min-h-[400px] flex items-center bg-black fade-up">
-                    <div class="absolute inset-0 bg-gradient-to-r from-black via-black to-transparent z-10"></div>
-                    
-                    <!-- ★Sena Valentineの画像（背景）★ -->
-                    <div class="absolute inset-0 opacity-40 bg-cover bg-center" style="background-image: url('images/MyAvator.png');"></div>
-                    
-                    <div class="relative z-20 p-10 md:p-20 max-w-2xl">
-                        <span class="text-xs font-bold text-gray-400 uppercase tracking-wider" data-translate="app3_category">Digital Art / Alter Ego</span>
-                        <h4 class="text-4xl md:text-5xl font-bold mt-2 mb-4 text-white">Sena Valentine</h4>
-                        <p class="text-lg text-gray-300 leading-relaxed mb-8" data-translate="app3_desc">
-                            Visit the another side. A portfolio of digital illustrations exploring the boundaries between reality and digital noise.
-                        </p>
-                        <a href="index.html" class="text-white hover:underline text-lg flex items-center gap-1 group">
-                            <span data-translate="visit_site">Visit Website</span>
-                            <span class="group-hover:translate-x-1 transition-transform">›</span>
-                        </a>
-                    </div>
-                </div>
-
-            </div>
-        </section>
-
-        <section id="philosophy" class="bg-white py-32">
-            <div class="max-w-[980px] mx-auto px-6">
-                <div class="text-center max-w-3xl mx-auto mb-20">
-                    <h3 class="text-4xl md:text-6xl font-bold mb-8 fade-up text-[#1d1d1f]" data-translate="philo_title">Designed for humans.</h3>
-                    <p class="text-xl md:text-2xl text-[#86868b] leading-relaxed fade-up" style="transition-delay: 0.1s" data-translate="philo_desc">
-                        We believe that technology should be quiet, helpful, and beautiful. 
-                        Every app is crafted with a focus on privacy, speed, and standard iOS design principles.
-                    </p>
-                </div>
-
-                <!-- Promises Grid: No Ads / No Subs -->
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 mt-20 fade-up" style="transition-delay: 0.2s">
-                    
-                    <!-- No Ads -->
-                    <div class="text-center flex flex-col items-center">
-                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                        </svg>
-                        <h4 class="text-lg font-semibold mb-2" data-translate="promise_ads_title">No Ads. Ever.</h4>
-                        <p class="text-[#86868b] text-sm leading-relaxed" data-translate="promise_ads_desc">
-                            Experience a clean interface without distractions. Your focus belongs to you.
-                        </p>
-                    </div>
-
-                    <!-- No Subscriptions -->
-                    <div class="text-center flex flex-col items-center">
-                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                        </svg>
-                        <h4 class="text-lg font-semibold mb-2" data-translate="promise_subs_title">One-Time Purchase.</h4>
-                        <p class="text-[#86868b] text-sm leading-relaxed" data-translate="promise_subs_desc">
-                            Own the app forever with a single purchase. No hidden recurring fees.
-                        </p>
-                    </div>
-
-                    <!-- Privacy -->
-                    <div class="text-center flex flex-col items-center">
-                        <svg class="feature-icon" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-                        </svg>
-                        <h4 class="text-lg font-semibold mb-2" data-translate="promise_privacy_title">Privacy First.</h4>
-                        <p class="text-[#86868b] text-sm leading-relaxed" data-translate="promise_privacy_desc">
-                            Your data stays on your device. We don't track you or sell your information.
-                        </p>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <footer id="contact" class="bg-[#f5f5f7] border-t border-gray-200 pt-10 pb-10 text-xs text-[#86868b]">
-            <div class="max-w-[980px] mx-auto px-6">
-                <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-                    <div>
-                        <p data-translate="copyright">Copyright © 2026 K.SENA. All rights reserved.</p>
-                    </div>
-                    <div class="flex gap-6">
-                        <button onclick="openPrivacyModal()" class="hover:underline text-[#1d1d1f] cursor-pointer" data-translate="privacy_link">Privacy Policy</button>
-                        <a href="mailto:senacore@icloud.com" class="hover:underline text-[#1d1d1f]" data-translate="contact_link">Contact</a>
-                    </div>
-                </div>
-                <div class="mt-8 pt-8 border-t border-gray-200 text-center md:text-left">
-                    <p data-translate="location">Designed in Japan.</p>
-                </div>
-            </div>
-        </footer>
-    </main>
-
-    <div id="privacyModal" class="fixed inset-0 z-[100] flex items-center justify-center hidden">
-        <div class="absolute inset-0 bg-black/30 backdrop-blur-sm" onclick="closePrivacyModal()"></div>
-        
-        <div class="bg-white rounded-2xl shadow-2xl w-full max-w-2xl max-h-[80vh] overflow-y-auto relative z-10 m-4 p-8 md:p-12">
-            <button onclick="closePrivacyModal()" class="absolute top-4 right-4 w-8 h-8 flex items-center justify-center rounded-full bg-gray-100 text-gray-500 hover:bg-gray-200 transition-colors">✕</button>
-            
-            <h2 class="text-2xl font-bold mb-8 text-[#1d1d1f]" data-translate="privacy_title">Privacy Policy</h2>
-            
-            <div class="text-[#1d1d1f] space-y-6 leading-relaxed text-sm md:text-base">
-                
-                <div class="policy-content en active">
-                    <p>This Privacy Policy applies to the apps and websites provided by K.SENA (hereinafter referred to as "our service").</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">1. Information Collection and Use</p>
-                    <p>We may collect and use the following information to the extent necessary to provide and improve our apps.</p>
-                    <ul>
-                        <li><strong>Device Information:</strong> Information necessary for app functionality (e.g., battery level, OS version, language settings).</li>
-                        <li><strong>User Content:</strong> Text, images, or other data that users voluntarily input or send within the app (e.g., chat messages).</li>
-                        <li><strong>Usage Data:</strong> Anonymous statistical data such as crash logs and performance analysis.</li>
-                    </ul>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">2. Use of Third-Party Services</p>
-                    <p>Some of our services may use the following third-party services for data storage, user authentication, or analytics. Information collected by these services is managed according to their respective privacy policies.</p>
-                    <ul>
-                        <li><strong>Google Firebase:</strong> Used for database, authentication, and analytics.<br>
-                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google Privacy Policy</a></li>
-                    </ul>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">3. User Generated Content (UGC)</p>
-                    <p>In apps with user communication features (e.g., Chat), we implement monitoring, reporting, and blocking functions to maintain a healthy community and prevent inappropriate content (such as offensive language or harassment).</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">4. Data Management and Third-Party Provision</p>
-                    <p>We do not provide personal information to third parties without user consent, except as required by law or to protect the life or property of individuals.</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">5. Disclaimer</p>
-                    <p>We are not responsible for any trouble or damage caused by the use of our service. Please understand that apps utilizing battery monitoring features may consume battery power due to their nature.</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">6. Changes to Privacy Policy</p>
-                    <p>This policy may be updated without prior notice due to service changes or legal amendments. Important changes will be notified on this site or within the app.</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">Contact Us</p>
-                    <p>If you have any questions, please contact us at:<br>
-                    Email: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
-                    <p class="text-right text-gray-400 text-xs mt-4">Last Updated: January 2, 2026</p>
-                </div>
-
-                <div class="policy-content ja">
-                    <p>当方は、提供するスマートフォンアプリおよびウェブサイト（以下、「当サービス」）におけるユーザー情報の取り扱いについて、以下の通りプライバシーポリシーを定めます。</p>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">1. 情報の収集と利用について</p>
-                    <p>当サービスでは、アプリの機能提供および品質向上のため、必要最小限の範囲で以下の情報を取得・利用する場合があります。</p>
-                    <ul>
-                        <li><strong>端末情報:</strong> アプリの機能実現に必要なデバイス情報（バッテリー残量、OSバージョン、言語設定など）。</li>
-                        <li><strong>ユーザーコンテンツ:</strong> チャットアプリやメモアプリ等において、ユーザー自身が入力・送信したテキストや画像データ。</li>
-                        <li><strong>利用状況データ:</strong> クラッシュ情報やパフォーマンス分析など、個人を特定しない統計データ。</li>
-                    </ul>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">2. 第三者サービスの利用について</p>
-                    <p>当サービスの一部では、データの保存やユーザー認証のために以下の第三者サービスを利用することがあります。これらのサービスにより収集された情報は、各社のプライバシーポリシーに基づいて管理されます。</p>
-                    <ul>
-                        <li><strong>Google Firebase:</strong> データベース、認証、解析のために利用します。<br>
-                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google プライバシーポリシー</a></li>
-                    </ul>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">3. ユーザー投稿コンテンツ（UGC）について</p>
-                    <p>ユーザー間のコミュニケーション機能を持つアプリにおいては、健全なコミュニティ維持のため、不適切なコンテンツ（公序良俗に反する内容、誹謗中傷など）の監視、削除、および通報・ブロック機能を提供する場合があります。</p>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">4. 個人情報の管理と第三者提供</p>
-                    <p>当方は、法令に基づく場合や、人の生命・財産の保護が必要な場合を除き、ユーザーの同意なく個人情報を第三者に提供することはありません。</p>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">5. 免責事項</p>
-                    <p>当サービスの利用により生じたトラブルや損害について、開発者は原則として責任を負いかねます。また、バッテリー監視等の機能を利用するアプリに関しては、特性上バッテリー消費が発生することをご了承ください。</p>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">6. プライバシーポリシーの変更</p>
-                    <p>本ポリシーの内容は、サービスの追加や法令の変更に伴い、予告なく改定されることがあります。重要な変更については、当サイトまたはアプリ内にて通知します。</p>
-
-                    <p class="font-bold text-gray-500 mb-2 mt-6">お問い合わせ</p>
-                    <p>本ポリシーや当サービスに関するご質問は、以下の連絡先までお問い合わせください。<br>
-                    メールアドレス: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
-                    <p class="text-right text-gray-400 text-xs mt-4">最終更新日: 2026年1月2日</p>
-                </div>
-
-                <div class="policy-content zh-TW">
-                    <p>本隱私權政策適用於 K.SENA 提供的應用程式及網站（以下簡稱「本服務」）。</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">1. 資訊收集與使用</p>
-                    <p>為了提供及改善服務，我們可能會收集並使用以下資訊：</p>
-                    <ul>
-                        <li><strong>裝置資訊：</strong> 應用程式功能所需的裝置資訊（如電池電量、作業系統版本、語言設定等）。</li>
-                        <li><strong>用戶內容：</strong> 用戶在聊天或筆記應用程式中自行輸入或傳送的文字與圖片資料。</li>
-                        <li><strong>使用數據：</strong> 崩潰報告及效能分析等不包含個人身分的統計數據。</li>
-                    </ul>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">2. 第三方服務的使用</p>
-                    <p>本服務部分功能可能會使用以下第三方服務進行資料儲存、用戶認證或分析。這些服務收集的資訊將根據其各自的隱私權政策進行管理。</p>
-                    <ul>
-                        <li><strong>Google Firebase：</strong> 用於資料庫、認證及分析。<br>
-                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google 隱私權政策</a></li>
-                    </ul>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">3. 用戶生成內容 (UGC)</p>
-                    <p>在具有用戶通訊功能的應用程式中，我們提供監控、檢舉及封鎖功能，以防止不當內容（如攻擊性語言或騷擾）並維護社群健康。</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">4. 免責聲明</p>
-                    <p>對於因使用本服務而造成的任何損害，開發者概不負責。請注意，使用電池監控功能的應用程式可能會消耗電池電力。</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">聯絡我們</p>
-                    <p>如有任何問題，請透過以下電子郵件聯繫我們。<br>
-                    電子郵件: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
-                    <p class="text-right text-gray-400 text-xs mt-4">最後更新：2026年1月2日</p>
-                </div>
-
-                <div class="policy-content ko">
-                    <p>본 개인정보 처리방침은 K.SENA가 제공하는 앱 및 웹사이트(이하 "본 서비스")에 적용됩니다.</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">1. 정보 수집 및 이용</p>
-                    <p>우리는 서비스 제공 및 품질 향상을 위해 필요한 최소한의 범위 내에서 다음 정보를 수집 및 이용할 수 있습니다.</p>
-                    <ul>
-                        <li><strong>단말기 정보:</strong> 앱 기능 구현에 필요한 기기 정보 (배터리 잔량, OS 버전, 언어 설정 등).</li>
-                        <li><strong>사용자 콘텐츠:</strong> 채팅 앱 등에서 사용자가 직접 입력하고 전송한 텍스트 및 이미지 데이터.</li>
-                        <li><strong>이용 데이터:</strong> 오류 로그 및 성능 분석 등 개인을 식별하지 않는 통계 데이터.</li>
-                    </ul>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">2. 제3자 서비스 이용</p>
-                    <p>본 서비스의 일부에서는 데이터 저장, 사용자 인증 및 분석을 위해 다음의 제3자 서비스를 이용할 수 있습니다.</p>
-                    <ul>
-                        <li><strong>Google Firebase:</strong> 데이터베이스, 인증, 분석을 위해 사용됩니다.<br>
-                        <a href="https://firebase.google.com/support/privacy" target="_blank" class="text-blue-600 hover:underline">Google 개인정보 처리방침</a></li>
-                    </ul>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">3. 사용자 생성 콘텐츠 (UGC)</p>
-                    <p>사용자 간 커뮤니케이션 기능이 있는 앱에서는 부적절한 콘텐츠(비방, 욕설 등)를 방지하고 건전한 커뮤니티를 유지하기 위해 신고 및 차단 기능을 제공합니다.</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">4. 면책 조항</p>
-                    <p>본 서비스 이용으로 인해 발생한 문제나 손해에 대해 개발자는 원칙적으로 책임을 지지 않습니다. 배터리 모니터링 기능을 사용하는 앱은 특성상 배터리 소모가 발생할 수 있음을 양해 바랍니다.</p>
-                    
-                    <p class="font-bold text-gray-500 mb-2 mt-6">문의하기</p>
-                    <p>질문이 있으시면 아래 이메일 주소로 연락해 주십시오.<br>
-                    이메일: <a href="mailto:senacore@icloud.com" class="text-blue-600 hover:underline">senacore@icloud.com</a></p>
-                    <p class="text-right text-gray-400 text-xs mt-4">최종 업데이트: 2026년 1월 2일</p>
-                </div>
-            </div>
-        </div>
+<main class="wrap">
+  <section class="hero">
+    <span class="mono" data-t="hero_kicker">Indie iOS app developer — Japan</span>
+    <h1 data-t="hero_title"><span>小さなアプリを、</span> <span>ひとりで、</span> <span>ゆっくりゆっくりと。</span></h1>
+    <p data-t="hero_desc">日本で個人開発をしている Sena Kondo です。気持ちを伝える道具、パズル、ちょっと変わったシミュレーションまで。広告なし、サブスクなし、必要のない情報は集めません。</p>
+    <div class="counts">
+      <div><strong id="nApps">22</strong><span data-t="c_apps">公開中のアプリ</span></div>
+      <div><strong>2025</strong><span data-t="c_since">最初のリリース</span></div>
+      <div><strong>0</strong><span data-t="c_ads">広告の数</span></div>
     </div>
+  </section>
 
-    <script>
-        // Translations Data
-        const translations = {
-            en: {
-                nav_apps: "Apps",
-                nav_philosophy: "Philosophy",
-                nav_contact: "Contact",
-                hero_subtitle: "Developer Portfolio",
-                hero_title: "Simplicity.<br>In every touch.",
-                hero_desc: "Designing intuitive iOS experiences that blend seamlessly into your life.",
-                hero_link: "See the apps",
-                apps_header: "Crafted for iPhone.",
-                app1_category: "Universal Communication",
-                app1_desc: "An app that expresses emotions and feelings through traffic signals. A universal design created for those who speak different languages or have difficulty vocalizing.",
-                view_store: "View on App Store",
-                
-                // New App 1: Quantarium
-                app_quantarium_cat: "Puzzle Game",
-                app_quantarium_desc: "A puzzle game that unravels the laws of the universe. Beautiful logic woven by numbers and space.",
+  <section id="new">
+    <div class="sec-head"><h2 data-t="new_head">新着</h2><span class="mono" data-t="new_sub">最近リリースしたアプリ</span></div>
+    <div class="news" id="news"></div>
+  </section>
 
-                // New App 2: UniNumPlace
-                app_uninum_cat: "Classic Puzzle",
-                app_uninum_desc: "Sudoku, redefined. A simple Sudoku app pursuing sound and visuals.",
+  <section id="apps">
+    <div class="sec-head"><h2 data-t="feat_head">代表作</h2><span class="mono" id="featCount">04 / 22</span></div>
+    <div class="featured" id="featured"></div>
 
-                // New App 3: NeuronSociety
-                app_neuron_cat: "Simulation",
-                app_neuron_desc: "A small society in your pocket. An observation simulation where artificial neurons act with their own will.",
+    <div class="sec-head">
+      <h2 data-t="all_head">すべてのアプリ</h2>
+      <div class="filters" id="filters"></div>
+    </div>
+    <div class="grid" id="grid"></div>
+    <noscript>
+      <ul class="static-list">
+      <li><a href="https://apps.apple.com/jp/app/id6752717188">EmotionLights</a> — 気持ちを信号の色で伝える。言葉が通じない相手や、声に出しにくい人のために。 / Say how you feel with a traffic signal — for when words don't work.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6756206151">Quantarium</a> — 5×5のマスを一筆書きで通り抜けるパズル。 / Cross a 5×5 grid in a single stroke.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6758519336">NeuronSociety</a> — ポケットの中の小さな社会。仮想生物たちの暮らしを観測する。 / A tiny society of artificial creatures, in your pocket.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6758512750">UniNumPlace</a> — 音とビジュアルにこだわったナンプレ。AIのヒント付き。 / Sudoku with care for sound and visuals, plus AI hints.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6837681389">Far Signal</a> — 遠い何処かからの通信。 / A transmission from somewhere far away.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6835673748">CMYemu</a> — CMYの色の重なりをシミュレーション。 / A CMY colour-mixing simulator.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6835705644">Tsutaeru-Board</a> — 伝えるためのボード。 / A board for getting your message across.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6835687703">思考連鎖帳</a> — 確定したら消せない、修正不可のノート。 / A notebook with no backspace.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6761419550">Liverb</a> — ライブ会場のような響きを。 / Live-venue reverb.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6761285042">Kumamoto'77</a> — 1977年の熊本へ。 / A trip to Kumamoto, 1977.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6758904133">DotCivLife</a> — ドットで描く擬似生命。 / Pixel artificial life.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6758533241">Fridgenius</a> — 冷蔵庫の中身から考える。 / Ideas from what's in your fridge.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6758544371">MorsePlay</a> — モールス信号を学ぶ。 / Learn Morse code.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6757297875">Decoding</a> — 横、縦、横、縦…と進めるパズル。 / Across, down, across, down — a puzzle.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6758050770">InkInkInk!</a> — 指で描くと、やがて消えるインク。 / Finger drawings in ink that fades.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6757296681">LowBatteryChat</a> — バッテリー50%以下でだけ話せる匿名チャット。 / Anonymous chat, only below 50% battery.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6745152270">ShinyaChecker</a> — いまが深夜テンションかを診断する。 / Check whether you're in late-night mode.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6744545439">人間ベンチマーク</a> — あなたの人間らしさを測る。 / Benchmark your humanity.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6744349734">KokoroTask</a> — 重要度・難易度・気持ちで並べるToDo。 / To-dos ranked by importance, effort and mood.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6744400968">ちょいチャレ</a> — 日常を小さなゲームに。 / Turn everyday life into small games.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6746412061">TapCutEigo</a> — 制限時間内に英単語を切る。 / Slice English words against the clock.</li>
+      <li><a href="https://apps.apple.com/jp/app/id6745712280">静禅</a> — 鐘と環境音で、静かに。 / Bells and ambient sound for quiet.</li>
+      </ul>
+    </noscript>
+  </section>
 
-                app3_category: "Digital Art / Alter Ego",
-                app3_desc: "Visit the another side. A portfolio of digital illustrations exploring the boundaries between reality and digital noise.",
-                visit_site: "Visit Website",
-                
-                philo_title: "Designed for humans.",
-                philo_desc: "We believe that technology should be quiet, helpful, and beautiful. Every app is crafted with a focus on privacy, speed, and standard iOS design principles.",
-                
-                // Promises
-                promise_ads_title: "No Ads. Ever.",
-                promise_ads_desc: "Experience a clean interface without distractions. Your focus belongs to you.",
-                promise_subs_title: "One-Time Purchase.",
-                promise_subs_desc: "Own the app forever with a single purchase. No hidden recurring fees.",
-                promise_privacy_title: "Privacy First.",
-                promise_privacy_desc: "Your data stays on your device. We don't track you or sell your information.",
+  <section id="art" class="alter reveal">
+    <div class="txt">
+      <div>
+        <span class="mono" data-t="alter_label">別名義</span>
+        <h3>Sena Valentine</h3>
+        <p data-t="alter_desc">別の名前で、現実とノイズの境界をテーマにしたデジタルイラストを描いています。</p>
+      </div>
+      <a href="index.html" data-t="alter_link">イラストを見る →</a>
+    </div>
+    <div class="img" role="img" aria-label="Sena Valentine illustration"></div>
+  </section>
 
-                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
-                privacy_link: "Privacy Policy",
-                contact_link: "Contact",
-                location: "Designed in Japan.",
-                privacy_title: "Privacy Policy"
-            },
-            ja: {
-                nav_apps: "アプリ",
-                nav_philosophy: "哲学",
-                nav_contact: "コンタクト",
-                hero_subtitle: "デベロッパーポートフォリオ",
-                hero_title: "シンプルさを、<br>すべてのタッチに。",
-                hero_desc: "生活に溶け込む、直感的なiOS体験をデザインします。",
-                hero_link: "アプリを見る",
-                apps_header: "iPhoneのために。",
-                app1_category: "ユニバーサル・コミュニケーション",
-                app1_desc: "感情や気持ちを信号で表せるアプリ。異なる言語や発声が難しい方へ作ったユニバーサルデザインです。",
-                view_store: "App Storeで見る",
-                
-                // New App 1: Quantarium
-                app_quantarium_cat: "パズルゲーム",
-                app_quantarium_desc: "宇宙の法則を解き明かすパズルゲーム。数と空間が織りなす美しいロジック。",
+  <section class="reveal">
+    <div class="sec-head"><h2 data-t="pr_head">コアバリュー</h2></div>
+    <div class="principles">
+      <div><span class="mono">A</span><h4 data-t="p1_t">アプリ内広告を出さない</h4><p data-t="p1_d">画面はアプリのためだけに使います。</p></div>
+      <div><span class="mono">B</span><h4 data-t="p2_t">無料か買い切り</h4><p data-t="p2_d">継続課金はありません。一度買えばずっと使えます。</p></div>
+      <div><span class="mono">C</span><h4 data-t="p3_t">データは端末の中に</h4><p data-t="p3_d">追跡も、情報の販売もしません。</p><a class="more" href="privacy.html" data-t="p3_more">詳しくはプライバシーポリシーをご覧ください →</a></div>
+    </div>
+  </section>
+</main>
 
-                // New App 2: UniNumPlace
-                app_uninum_cat: "定番パズル",
-                app_uninum_desc: "ナンプレを、再定義する。音とビジュアルを追求した、シンプルなナンプレアプリ。",
+<footer id="contact">
+  <div class="wrap">
+    <span>© 2026 K.SENA</span>
+    <div class="links">
+      <a href="https://apps.apple.com/jp/developer/sena-kondo/id1807240487" target="_blank" rel="noopener">App Store</a>
+      <a href="privacy.html" data-t="privacy">プライバシーポリシー</a>
+      <a href="mailto:senacore@icloud.com">senacore@icloud.com</a>
+    </div>
+  </div>
+</footer>
 
-                // New App 3: NeuronSociety
-                app_neuron_cat: "シミュレーション",
-                app_neuron_desc: "ポケットの中の小さな社会。人工ニューロンたちが意思を持ち、活動していく様子を見守る観測シミュレーション。",
+<!-- chat -->
+<div id="chatRoot">
+  <section class="chat" aria-label="Chat" aria-hidden="true">
+    <div class="chat-head">
+      <div class="av">SK</div>
+      <div><b data-t="chat_title">アプリ案内</b><span data-t="chat_sub">アプリ探しのお手伝い</span></div>
+    </div>
+    <div class="msgs" id="msgs"></div>
+    <div class="chips" id="chips"></div>
+    <form id="chatForm" autocomplete="off">
+      <input id="chatIn" data-tp="chat_ph" placeholder="例：無料のパズル" maxlength="80">
+      <button aria-label="Send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+    </form>
+  </section>
+  <button class="chat-btn" aria-label="Open chat" aria-expanded="false">
+    <svg class="b" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4.5h12a1 1 0 011 1v7a1 1 0 01-1 1H9l-4 3v-3H4a1 1 0 01-1-1v-7a1 1 0 011-1z"/></svg>
+    <svg class="x" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 5l10 10M15 5L5 15"/></svg>
+    <span class="dot"></span>
+  </button>
+</div>
 
-                app3_category: "デジタルアート / 別名義",
-                app3_desc: "もう一つの側面へ。現実とデジタルノイズの境界を探求するデジタルイラストレーションのポートフォリオ。",
-                visit_site: "ウェブサイトを見る",
-                
-                philo_title: "人のためのデザイン。",
-                philo_desc: "テクノロジーは静かで、便利で、美しいものであるべきです。すべてのアプリはプライバシー、スピード、iOSのデザイン原則を重視して作られています。",
-                
-                // Promises
-                promise_ads_title: "広告なし。",
-                promise_ads_desc: "邪魔なもののない、クリーンなインターフェースを体験してください。",
-                promise_subs_title: "買い切り型。",
-                promise_subs_desc: "一度の購入で、ずっとあなたのもの。隠れた継続課金はありません。",
-                promise_privacy_title: "プライバシー重視。",
-                promise_privacy_desc: "データはあなたのデバイスの中に。追跡や情報の販売は一切行いません。",
+<script>
+/* ---------- データ（App Store の公開情報から）
+   cat: game / tool / learn / calm
+   desc は ja と en。zh-TW / ko は en にフォールバック */
+const APPS = [
+  {id:6752717188, n:"EmotionLights", cat:"tool", p:0,   y:2025, ja:"気持ちを信号の色で伝える。言葉が通じない相手や、声に出しにくい人のために。", en:"Say how you feel with a traffic signal — for when words don't work."},
+  {id:6756206151, n:"Quantarium",    cat:"game", p:0,   y:2025, f:1, ja:"5×5のマスを一筆書きで通り抜けるパズル。", en:"Cross a 5×5 grid in a single stroke."},
+  {id:6758519336, n:"NeuronSociety", cat:"game", p:300, y:2026, ja:"ポケットの中の小さな社会。仮想生物たちの暮らしを観測する。", en:"A tiny society of artificial creatures, in your pocket."},
+  {id:6758512750, n:"UniNumPlace",   cat:"game", p:100, y:2026, ja:"音とビジュアルにこだわったナンプレ。AIのヒント付き。", en:"Sudoku with care for sound and visuals, plus AI hints."},
+  {id:6837681389, n:"Far Signal",    cat:"game", p:0,   y:2026, ja:"遠い何処かからの通信。", en:"A transmission from somewhere far away."},
+  {id:6835673748, n:"CMYemu",        cat:"tool", p:0,   y:2026, f:1, ja:"CMYの色の重なりをシミュレーション。", en:"A CMY colour-mixing simulator."},
+  {id:6835705644, n:"Tsutaeru-Board",cat:"tool", p:0,   y:2026, f:1, ja:"伝えるためのボード。", en:"A board for getting your message across."},
+  {id:6835687703, n:"思考連鎖帳",     cat:"tool", p:0,   y:2026, ja:"確定したら消せない、修正不可のノート。", en:"A notebook with no backspace."},
+  {id:6761419550, n:"Liverb",        cat:"tool", p:0,   y:2026, f:1, ja:"ライブ会場のような響きを。", en:"Live-venue reverb."},
+  {id:6761285042, n:"Kumamoto'77",   cat:"game", p:150, y:2026, ja:"1977年の熊本へ。", en:"A trip to Kumamoto, 1977."},
+  {id:6758904133, n:"DotCivLife",    cat:"game", p:100, y:2026, ja:"ドットで描く擬似生命。", en:"Pixel artificial life."},
+  {id:6758533241, n:"Fridgenius",    cat:"tool", p:0,   y:2026, ja:"冷蔵庫の中身から考える。", en:"Ideas from what's in your fridge."},
+  {id:6758544371, n:"MorsePlay",     cat:"learn",p:0,   y:2026, ja:"モールス信号を学ぶ。", en:"Learn Morse code."},
+  {id:6757297875, n:"Decoding",      cat:"game", p:0,   y:2026, ja:"横、縦、横、縦…と進めるパズル。", en:"Across, down, across, down — a puzzle."},
+  {id:6758050770, n:"InkInkInk!",    cat:"tool", p:0,   y:2026, ja:"指で描くと、やがて消えるインク。", en:"Finger drawings in ink that fades."},
+  {id:6757296681, n:"LowBatteryChat",cat:"tool", p:0,   y:2026, ja:"バッテリー50%以下でだけ話せる匿名チャット。", en:"Anonymous chat, only below 50% battery."},
+  {id:6745152270, n:"ShinyaChecker", cat:"calm", p:0,   y:2025, ja:"いまが深夜テンションかを診断する。", en:"Check whether you're in late-night mode."},
+  {id:6744545439, n:"人間ベンチマーク", cat:"game", p:0,   y:2025, ja:"あなたの人間らしさを測る。", en:"Benchmark your humanity."},
+  {id:6744349734, n:"KokoroTask",    cat:"tool", p:0,   y:2025, ja:"重要度・難易度・気持ちで並べるToDo。", en:"To-dos ranked by importance, effort and mood."},
+  {id:6744400968, n:"ちょいチャレ",   cat:"game", p:0,   y:2025, ja:"日常を小さなゲームに。", en:"Turn everyday life into small games."},
+  {id:6746412061, n:"TapCutEigo",    cat:"learn",p:100, y:2025, ja:"制限時間内に英単語を切る。", en:"Slice English words against the clock."},
+  {id:6745712280, n:"静禅",           cat:"calm", p:100, y:2025, ja:"鐘と環境音で、静かに。", en:"Bells and ambient sound for quiet."}
+];
+const url = id => `https://apps.apple.com/jp/app/id${id}`;
+/* 初回リリース日（App Store より）。新着欄とチャットの「最近」に使う */
+const D = {6837681389:"2026-11-22",6835673748:"2026-11-18",6835705644:"2026-11-18",6835687703:"2026-11-18",6761419550:"2026-04-01",6761285042:"2026-03-31",
+  6758904133:"2026-02-10",6758533241:"2026-02-02",6758544371:"2026-02-02",6758519336:"2026-02-02",6758512750:"2026-02-02",6758050770:"2026-01-23",
+  6757296681:"2026-01-15",6757297875:"2026-01-06",6756206151:"2025-12-07",6752717188:"2025-09-22",6746412061:"2025-05-27",6745712280:"2025-05-12",
+  6744545439:"2025-04-30",6745152270:"2025-04-28",6744400968:"2025-04-14",6744349734:"2025-04-08"};
+APPS.forEach(a => a.d = D[a.id] || `${a.y}-01-01`);
+const byNew = () => [...APPS].sort((a,b) => b.d.localeCompare(a.d));
+const fmtDate = d => { const [y,m,dd] = d.split('-').map(Number);
+  return lang === 'ja' || lang === 'zh-TW' ? `${y}年${m}月${dd}日` : lang === 'ko' ? `${y}년 ${m}월 ${dd}일`
+    : new Date(y, m-1, dd).toLocaleDateString('en-GB', {day:'numeric', month:'short', year:'numeric'}); };
 
-                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
-                privacy_link: "プライバシーポリシー",
-                contact_link: "お問い合わせ",
-                location: "Designed in Japan.",
-                privacy_title: "プライバシーポリシー"
-            },
-            "zh-TW": {
-                nav_apps: "應用程式",
-                nav_philosophy: "理念",
-                nav_contact: "聯絡我們",
-                hero_subtitle: "開發者作品集",
-                hero_title: "簡約，<br>盡在指尖。",
-                hero_desc: "設計直觀的 iOS 體驗，無縫融入您的生活。",
-                hero_link: "查看應用程式",
-                apps_header: "為 iPhone 精心打造。",
-                app1_category: "通用溝通",
-                app1_desc: "透過信號燈表達情緒與感受的應用程式。專為語言不同或難以發聲的人士設計的通用設計。",
-                view_store: "在 App Store 查看",
-                
-                // New App 1: Quantarium
-                app_quantarium_cat: "益智遊戲",
-                app_quantarium_desc: "解開宇宙法則的益智遊戲。由數字與空間交織而成的美麗邏輯。",
+/* ---------- UI text */
+const T = {
+  ja: { cat:{all:"すべて",game:"ゲーム",tool:"道具",learn:"学習",calm:"気分"}, free:"無料",
+        chat_ph:"例：無料のパズル" },
+  en: {
+    nav_apps:"Apps", nav_art:"Art", nav_contact:"Contact",
+    hero_kicker:"Indie iOS app developer — Japan",
+    hero_title:"<span>Small apps,</span> <span>made by one person,</span> <span>slowly, slowly.</span>",
+    hero_desc:"I'm Sena Kondo, an independent iOS developer in Japan. Tools for saying how you feel, puzzles, and a few odd simulations. No ads, no subscriptions, nothing collected that doesn't need to be.",
+    c_apps:"apps on the App Store", c_since:"first release", c_ads:"ads",
+    new_head:"New", new_sub:"Recently released", feat_head:"Featured", all_head:"All apps",
+    alter_label:"Another name", alter_desc:"Under another name, I draw digital illustrations about the edge between reality and noise.", alter_link:"See the illustrations →",
+    pr_head:"Core values",
+    p1_t:"No in-app ads", p1_d:"The screen belongs to the app.", p2_t:"Free or pay once", p2_d:"No recurring fees. Buy once, keep it.", p3_t:"Data stays on your device", p3_d:"No tracking, and nothing is sold.", p3_more:"See the privacy policy for details →",
+    privacy:"Privacy policy", chat_title:"App guide", chat_sub:"Help finding an app", chat_ph:"e.g. free puzzle",
+    cat:{all:"All",game:"Games",tool:"Tools",learn:"Learn",calm:"Mood"}, free:"Free"
+  },
+  "zh-TW": {
+    nav_apps:"應用程式", nav_art:"插畫", nav_contact:"聯絡",
+    hero_title:"<span>小小的應用程式，</span> <span>一個人，</span> <span>慢慢地，慢慢地。</span>",
+    hero_desc:"我是 Sena Kondo，在日本獨立開發 iOS 應用程式。沒有廣告、沒有訂閱，不收集不必要的資訊。",
+    c_apps:"已上架", c_since:"首次發布", c_ads:"廣告", new_head:"新上架", new_sub:"最近發布的應用程式", feat_head:"代表作", all_head:"全部應用程式",
+    alter_label:"另一個名字", alter_desc:"以另一個名字創作數位插畫。", alter_link:"查看插畫 →",
+    pr_head:"核心價值", p1_t:"沒有應用程式內廣告", p1_d:"畫面只屬於應用程式。", p2_t:"免費或一次買斷", p2_d:"沒有定期費用。", p3_t:"資料留在裝置上", p3_d:"不追蹤，不出售。", p3_more:"詳情請參閱隱私權政策 →",
+    privacy:"隱私權政策", chat_title:"應用程式導覽", chat_sub:"幫你找應用程式", chat_ph:"例：免費 益智",
+    cat:{all:"全部",game:"遊戲",tool:"工具",learn:"學習",calm:"心情"}, free:"免費"
+  },
+  ko: {
+    nav_apps:"앱", nav_art:"일러스트", nav_contact:"연락처",
+    hero_title:"<span>작은 앱을,</span> <span>혼자서,</span> <span>천천히, 천천히.</span>",
+    hero_desc:"일본에서 개인 개발을 하는 Sena Kondo입니다. 광고도 구독도 없고, 필요 없는 정보는 수집하지 않습니다.",
+    c_apps:"출시한 앱", c_since:"첫 출시", c_ads:"광고", new_head:"새로 나온 앱", new_sub:"최근 출시", feat_head:"대표작", all_head:"모든 앱",
+    alter_label:"다른 이름", alter_desc:"다른 이름으로 디지털 일러스트를 그립니다.", alter_link:"일러스트 보기 →",
+    pr_head:"핵심 가치", p1_t:"앱 내 광고 없음", p1_d:"화면은 앱만을 위해.", p2_t:"무료 또는 한 번 구매", p2_d:"정기 결제는 없습니다.", p3_t:"데이터는 기기 안에", p3_d:"추적하지 않고, 판매하지 않습니다.", p3_more:"자세한 내용은 개인정보 처리방침을 참고하세요 →",
+    privacy:"개인정보 처리방침", chat_title:"앱 안내", chat_sub:"앱 찾기 도우미", chat_ph:"예: 무료 퍼즐",
+    cat:{all:"전체",game:"게임",tool:"도구",learn:"학습",calm:"기분"}, free:"무료"
+  }
+};
+document.querySelectorAll('[data-t]').forEach(el => T.ja[el.dataset.t] = el.innerHTML);
+let lang = 'ja', filter = 'game';
+const tx = k => (T[lang][k] ?? T.en[k] ?? T.ja[k]);
+const desc = a => lang === 'ja' ? a.ja : a.en;
+const price = a => a.p ? `¥${a.p}` : tx('free');
+const arrow = '<svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3.5 8.5l5-5M4.5 3.5h4v4"/></svg>';
 
-                // New App 2: UniNumPlace
-                app_uninum_cat: "經典益智",
-                app_uninum_desc: "重新定義數獨。追求音效與視覺效果的簡約數獨應用程式。",
+/* ---------- render */
+function renderNews() {
+  news.innerHTML = byNew().slice(0, 3).map(a => `
+    <a href="${url(a.id)}" target="_blank" rel="noopener">
+      <img class="icon" data-id="${a.id}" alt="${a.n} icon" loading="lazy">
+      <div><h3>${a.n}</h3><span class="mono">${fmtDate(a.d)} · ${price(a)}</span></div>
+    </a>`).join('');
+}
+function render() { renderNews(); renderFeatured(); renderGrid(); }
+function renderFeatured() {
+  const FEAT = ['Quantarium','Liverb','Tsutaeru-Board','CMYemu'];
+  featured.innerHTML = FEAT.map(n => APPS.find(a => a.n === n)).filter(Boolean).map(a => `
+    <article class="feat reveal">
+      <img class="icon" data-id="${a.id}" alt="${a.n} icon" loading="lazy">
+      <div>
+        <span class="mono">${tx('cat')[a.cat]} · ${a.y}</span>
+        <h3>${a.n}</h3><p>${desc(a)}</p>
+        <div class="row"><span class="mono">${price(a)}</span><a class="store" href="${url(a.id)}" target="_blank" rel="noopener">App Store ${arrow}</a></div>
+      </div>
+    </article>`).join('');
+  applyIcons(); observe();
+}
+/* 絞り込みは一覧だけを描き直す（代表作には触れない） */
+function renderGrid() {
+  grid.innerHTML = APPS.map(a => `
+    <a class="cell${filter!=='all' && a.cat!==filter ? ' hide':''}" href="${url(a.id)}" target="_blank" rel="noopener">
+      <img class="icon" data-id="${a.id}" alt="${a.n} icon" loading="lazy">
+      <div><h3>${a.n}</h3><p>${desc(a)}</p><span class="mono">${price(a)} · ${a.y}</span></div>
+    </a>`).join('');
+  filters.innerHTML = Object.entries(tx('cat')).sort(([a],[b]) => (a==='all') - (b==='all')).map(([k,v]) => `<button data-c="${k}" aria-pressed="${k===filter}">${v}</button>`).join('');
+  applyIcons(); observe();
+}
+filters.onclick = e => { const b = e.target.closest('button'); if (!b) return; filter = b.dataset.c; renderGrid(); };
 
-                // New App 3: NeuronSociety
-                app_neuron_cat: "模擬遊戲",
-                app_neuron_desc: "口袋裡的小小社會。觀察擁有自我意志的人工神經元活動的模擬遊戲。",
+/* ---------- アイコンは App Store（iTunes Search API）から実行時に取得。
+   アプリを追加したら APPS に1行足すだけでアイコンも出る */
+const ICONS = {};
+function applyIcons() { document.querySelectorAll('img[data-id]').forEach(i => { const s = ICONS[i.dataset.id]; if (s) i.src = s; }); }
+/* 開発者IDで全アプリを取得。APPS に無いアプリは App Store の説明文の1行目から自動で追加される */
+const GENRE = {6014:'game', 6017:'learn', 6013:'calm'};
+const firstLine = t => { const l = (t||'').split(/\n/).map(x => x.trim()).find(Boolean) || ''; return l.length > 42 ? l.slice(0, 40) + '…' : l; };
+window.__icons = r => {
+  let added = 0;
+  (r.results || []).forEach(x => {
+    if (!x.trackId) return;
+    ICONS[x.trackId] = x.artworkUrl512 || x.artworkUrl100;
+    if (!APPS.some(a => a.id === x.trackId)) {
+      const d = (x.releaseDate || '').slice(0, 10), line = firstLine(x.description);
+      APPS.push({ id:x.trackId, n:x.trackName, cat:GENRE[x.primaryGenreId] || 'tool', p:Math.round(x.price||0), y:+d.slice(0,4), d, ja:line, en:line, auto:1 });
+      added++;
+    }
+  });
+  if (added) { nApps.textContent = APPS.length; featCount.textContent = `04 / ${APPS.length}`; render(); } else applyIcons();
+};
+const s = document.createElement('script');
+s.src = `https://itunes.apple.com/lookup?id=1807240487&entity=software&country=jp&limit=200&callback=__icons`;
+document.head.appendChild(s);
 
-                app3_category: "數位藝術 / 另一個自我",
-                app3_desc: "造訪另一面。探索現實與數位噪聲邊界的數位插畫作品集。",
-                visit_site: "訪問網站",
-                
-                philo_title: "以人為本的設計。",
-                philo_desc: "我們相信科技應該是安靜、有益且美麗的。每個應用程式都注重隱私、速度和標準 iOS 設計原則。",
-                
-                // Promises
-                promise_ads_title: "絕無廣告。",
-                promise_ads_desc: "體驗沒有干擾的乾淨介面。您的專注力只屬於您。",
-                promise_subs_title: "一次性買斷。",
-                promise_subs_desc: "只需支付一次，永久擁有。沒有隱藏的訂閱費用。",
-                promise_privacy_title: "隱私至上。",
-                promise_privacy_desc: "您的數據保留在裝置上。我們不會追蹤您或出售您的資訊。",
+/* ---------- lang */
+function setLang(l) {
+  lang = l; document.documentElement.lang = l;
+  document.querySelectorAll('[data-t]').forEach(el => { const v = tx(el.dataset.t); if (typeof v === 'string') el.innerHTML = v; });
+  document.querySelectorAll('[data-tp]').forEach(el => el.placeholder = tx(el.dataset.tp));
+  document.querySelectorAll('.langs button').forEach(b => b.setAttribute('aria-pressed', b.dataset.lang === l));
+  render(); resetChat();
+}
+document.querySelectorAll('.langs button').forEach(b => b.onclick = () => setLang(b.dataset.lang));
 
-                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
-                privacy_link: "隱私權政策",
-                contact_link: "聯絡我們",
-                location: "Designed in Japan.",
-                privacy_title: "隱私權政策"
-            },
-            ko: {
-                nav_apps: "앱",
-                nav_philosophy: "철학",
-                nav_contact: "연락처",
-                hero_subtitle: "개발자 포트폴리오",
-                hero_title: "단순함,<br>모든 터치에 담다.",
-                hero_desc: "당신의 삶에 자연스럽게 스며드는 직관적인 iOS 경험을 디자인합니다.",
-                hero_link: "앱 보기",
-                apps_header: "iPhone을 위한 장인정신.",
-                app1_category: "유니버설 커뮤니케이션",
-                app1_desc: "감정과 기분을 신호등으로 표현할 수 있는 앱. 언어가 다르거나 발화가 어려운 분들을 위해 만든 유니버설 디자인입니다.",
-                view_store: "App Store에서 보기",
-                
-                // New App 1: Quantarium
-                app_quantarium_cat: "퍼즐 게임",
-                app_quantarium_desc: "우주의 법칙을 풀어나가는 퍼즐 게임. 숫자와 공간이 자아내는 아름다운 로직.",
+/* ---------- reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } }), { threshold: .12 });
+function observe() { document.querySelectorAll('.reveal:not(.in)').forEach(el => io.observe(el)); }
 
-                // New App 2: UniNumPlace
-                app_uninum_cat: "클래식 퍼즐",
-                app_uninum_desc: "스도쿠의 재정의. 사운드와 비주얼을 추구한 심플한 스도쿠 앱.",
+/* ---------- chat：サーバーなし。アプリ一覧から答えるだけの案内役 */
+const L = {
+  ja: { hi:"こんにちは。どんなアプリを探していますか？", chips:["最近のアプリ","無料のパズル","100円以下","おまかせ","作者について"],
+        more:["他のジャンル","最近のアプリ","おまかせ"], none:"ぴったりのものが見つかりませんでした。メールで聞いてもらえれば答えます：",
+        get about(){ return `Sena Kondo は日本の個人開発者です。アプリ内広告なし・継続課金なしで、これまでに${APPS.length}本を公開しています。`; },
+        found:n=>`${n}本見つかりました。`, newest:"最近リリースした順です。", pick:"今日のおすすめはこれです。", cats:"どのジャンルにしますか？", rest:n=>`ほか${n}本は下の一覧にあります。` },
+  en: { hi:"Hi. What kind of app are you looking for?", chips:["Recent apps","Free puzzles","¥100 or less","Surprise me","About the developer"],
+        more:["Other genres","Recent apps","Surprise me"], none:"I couldn't find a match. Feel free to ask by email:",
+        get about(){ return `Sena Kondo is an indie developer in Japan — ${APPS.length} apps so far, no in-app ads, no subscriptions.`; },
+        found:n=>`Found ${n}.`, newest:"Newest first.", pick:"Here's today's pick.", cats:"Which genre?", rest:n=>`${n} more in the list below.` },
+  "zh-TW": { hi:"你好。想找什麼樣的應用程式？", chips:["最近的","免費益智","100日圓以下","隨便推薦","關於作者"], more:["其他類型","最近的","隨便推薦"] },
+  ko: { hi:"안녕하세요. 어떤 앱을 찾고 있나요?", chips:["최근 앱","무료 퍼즐","100엔 이하","아무거나","개발자 소개"], more:["다른 장르","최근 앱","아무거나"] }
+};
+const cl = () => ({...L.en, ...(L[lang]||{})});
+const root = document.body, btn = document.querySelector('.chat-btn'), panel = document.querySelector('.chat');
+btn.onclick = () => {
+  const open = root.classList.toggle('chat-open'); root.classList.add('seen');
+  btn.setAttribute('aria-expanded', open); panel.setAttribute('aria-hidden', !open);
+  if (open && !msgs.children.length) resetChat(true);
+  if (open) setTimeout(() => chatIn.focus({preventScroll:true}), 350);
+};
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && root.classList.contains('chat-open')) btn.click(); });
 
-                // New App 3: NeuronSociety
-                app_neuron_cat: "시뮬레이션",
-                app_neuron_desc: "주머니 속의 작은 사회. 인공 뉴런들이 의지를 가지고 활동하는 모습을 지켜보는 관측 시뮬레이션.",
+function add(html, who='bot', wide=false) { const d = document.createElement('div'); d.className = `m ${who}${wide?' wide':''}`; d.innerHTML = html; msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight; return d; }
+function botSay(r, delay=550) {
+  const t = add('<span class="typing"><i></i><i></i><i></i></span>'); t.style.padding = '0';
+  return new Promise(res => setTimeout(() => {
+    t.remove();
+    const html = typeof r === 'string' ? r : r.text + (r.apps ? cards(r.apps) : '');
+    add(html, 'bot', !!r.apps); applyIcons();
+    setChips(r.chips || cl().more, 120); res();
+  }, delay));
+}
+function cards(list) {
+  return '<div style="margin-top:6px">' + list.map(a => `<a class="hit" href="${url(a.id)}" target="_blank" rel="noopener">
+    <img data-id="${a.id}" alt=""><span><b>${a.n}</b><br><small>${tx('cat')[a.cat]}</small></span><small>${price(a)}</small></a>`).join('') + '</div>';
+}
+function setChips(list, delay=0) { chips.innerHTML = list.map((c,i) => `<button style="animation-delay:${delay + i*60}ms">${c}</button>`).join(''); }
+chips.onclick = e => { const b = e.target.closest('button'); if (b) ask(b.textContent); };
+function resetChat(force) { if (!force && !msgs.children.length) return; msgs.innerHTML = ''; botSay({text: cl().hi, chips: cl().chips}, 400); chips.innerHTML = ''; }
 
-                app3_category: "디지털 아트 / 또 다른 자아",
-                app3_desc: "또 다른 이면을 방문하세요. 현실과 디지털 노이즈 사이의 경계를 탐구하는 디지털 일러스트레이션 포트폴리오.",
-                visit_site: "웹사이트 방문",
-                
-                philo_title: "사람을 위한 디자인.",
-                philo_desc: "우리는 기술이 조용하고, 도움이 되며, 아름다워야 한다고 믿습니다. 모든 앱은 개인정보 보호, 속도, iOS 디자인 원칙에 중점을 두고 제작됩니다.",
-                
-                // Promises
-                promise_ads_title: "광고 없음.",
-                promise_ads_desc: "방해 요소 없는 깨끗한 인터페이스를 경험하세요. 당신의 집중은 오직 당신의 것입니다.",
-                promise_subs_title: "평생 소장.",
-                promise_subs_desc: "한 번의 구매로 평생 소유하세요. 숨겨진 정기 결제는 없습니다.",
-                promise_privacy_title: "개인정보 보호 최우선.",
-                promise_privacy_desc: "데이터는 당신의 기기에만 머무릅니다. 우리는 당신을 추적하거나 정보를 판매하지 않습니다.",
+/* 雑談：ゆるい定型返答。最後にアプリ探しへ戻す */
+const TALK = {
+  ja: [
+    [/^(こんにちは|こんばんは|おはよう|やあ|hi|hello|ハロー)/, ["こんにちは。のんびり見ていってください。","こんにちは。今日はどんな気分ですか？","やあ。何か面白いもの、探しましょうか。"]],
+    [/ありがと|thanks|サンキュ/, ["どういたしまして。","お役に立ててよかったです。","いえいえ。また来てください。"]],
+    [/元気|調子|how are/, ["元気です。いま次のアプリのことを考えていました。","まあまあです。あなたは？"]],
+    [/疲れ|眠い|つかれ|ねむ/, ["おつかれさまです。静禅で少し休むのはどうでしょう。","無理せずに。ShinyaChecker で深夜テンションか確かめてみては。"]],
+    [/暇|ひま|退屈/, ["それならパズルはどうでしょう。Quantarium は一筆書きで5分くらい遊べます。","おまかせで1本選びましょうか？"]],
+    [/好き|かわいい|すごい|いいね/, ["うれしいです。","ありがとうございます。作った本人に伝えておきます。"]],
+    [/天気|weather/, ["ここからは空が見えないんです。画面の背景の色なら、ゆっくり変わっていますよ。"]],
+    [/名前|だれ|誰|あなたは/, ["Sena Kondo のアプリを案内する係です。名前はまだありません。"]],
+    [/面白い話|ジョーク|笑わせ|joke/, ["1本目のアプリを作ったとき、ボタンが画面の外にありました。","バグを直したら、別のバグが「呼んだ？」と出てきました。"]],
+    [/さようなら|ばいばい|またね|bye/, ["またね。","おやすみなさい、もしくは、いってらっしゃい。"]]
+  ],
+  en: [
+    [/^(hi|hello|hey|yo)\b/, ["Hi. Take your time looking around.","Hello. How's your day going?"]],
+    [/thank/, ["You're welcome.","Glad to help."]],
+    [/how are|how's it/, ["Doing fine — thinking about the next app.","Not bad. You?"]],
+    [/tired|sleepy/, ["Take a break. 静禅 might help.","Maybe check if you're in late-night mode with ShinyaChecker."]],
+    [/bored/, ["Try a puzzle — Quantarium takes about five minutes.","Want me to pick one for you?"]],
+    [/love|cool|nice|great/, ["That's kind of you.","Thanks. I'll pass it on to the developer."]],
+    [/weather/, ["Can't see the sky from here. The background is slowly changing colour, though."]],
+    [/who are you|your name/, ["I'm the guide for Sena Kondo's apps. No name yet."]],
+    [/joke|funny/, ["My first app had its button off-screen.","Fixed one bug; another one said, \"you called?\""]],
+    [/bye|see you/, ["See you.","Bye for now."]]
+  ]
+};
+const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+const FALLBACK = { ja:["うーん、ちょっと分かりませんでした。アプリのことなら答えられます。","なるほど。ところで、アプリを探してみませんか？"],
+                   en:["Hmm, not sure about that. I can help with the apps, though.","I see. Want to look for an app?"] };
+/* 悪口には定型の一言とメールアドレスを返す */
+const RUDE = new RegExp([
+  // ja
+  '死ね','しね(?!ん)','氏ね','タヒね','ころす','殺す','消えろ','きえろ','失せろ','うせろ','黙れ','だまれ',
+  'うざ','ウザ','きも(?!ち|の)','キモ','きしょ','キショ','ゴミ','ごみ','カス','かす(?!る|か|れ)','クソ','くそ','糞','ksk',
+  'ばか(?!り)','バカ','馬鹿','あほ(?!う)','アホ','阿呆','間抜け','まぬけ','ボケ','ぼけ(?!る)','たわけ','ポンコツ','ぽんこつ',
+  'ブス','ぶす(?!っ)','デブ','ハゲ','チビ','低能','無能','低脳','脳みそ','知恵遅れ','頭悪','あたまわる',
+  'つまらん','つまんね','つまらない','くだらな','下らな','へたくそ','下手くそ','ヘタクソ','センスない','センスねえ','センスゼロ',
+  '最悪','最低','ダサ','だっさ','オワコン','おわこん','クソゲー','くそげー','クソアプリ','ゴミアプリ','金返せ','詐欺',
+  'ざまあ','ざまぁ','ふざけんな','ふざけるな','なめてん','舐めてん','きっしょ','しょぼ','ショボ',
+  // en
+  'fuck','f\\*ck','fck','wtf','shit','sh\\*t','bullshit','crap','damn','bitch','bastard','asshole','dick','prick','jerk',
+  'stupid','idiot','moron','dumb','retard','loser','lame','pathetic','useless','worthless','sucks','trash','garbage','rubbish','ugly','boring','hate you','hate this','kys','stfu','scam','\\bdie\\b','\\bdie!','drop dead','kill yourself','go to hell','get lost','piss off','screw you','shut up','ai ?slop','slop','AIスロップ','スロップ',
+  // zh
+  '垃圾','笨蛋','白痴','智障','廢物','废物','去死','滾','滚','他媽','他妈','幹你','干你','靠北','爛','烂透',
+  // ko
+  '바보','병신','븅신','씨발','시발','ㅅㅂ','ㅂㅅ','개새','꺼져','멍청','쓰레기','닥쳐','미친','존나'
+].join('|'), 'i');
+const COMPLAIN = { ja:"文句があるなら直接どうぞ。", en:"If you have a complaint, tell me directly.", "zh-TW":"有意見的話，請直接來信。", ko:"불만이 있으면 직접 연락 주세요." };
+const SORRY = /ごめん|すみません|すいません|申し訳|悪かった|わるかった|失礼しました|許して|sorry|apolog|my bad|對不起|对不起|抱歉|미안|죄송/i;
+const FORGIVE = { ja:"分かってもらえればいいんです。是非ダウンロードをご検討ください。", en:"Apology accepted. Please consider downloading this one.",
+  "zh-TW":"知道就好。歡迎考慮下載這個。", ko:"알아주셨으면 됐어요. 이 앱, 다운로드를 고려해 주세요." };
+let wasRude = false;
+/* おすすめは「袋から引く」方式：全アプリを一巡するまで同じものは出ない（読み込み直しても順番は毎回変わる） */
+let bag = [];
+function pickApp() {
+  if (!bag.length) bag = [...APPS].sort(() => Math.random() - .5);
+  return bag.pop();
+}
+function smallTalk(s) {
+  const set = TALK[lang] || TALK.en;
+  for (const [re, replies] of [...set, ...(lang==='ja'?[]:TALK.ja)]) if (re.test(s)) return pick(replies);
+  return null;
+}
+const has = (s, re) => re.test(s);
+function answer(q) {
+  const s = q.toLowerCase(), c = cl();
+  if (wasRude && SORRY.test(s)) { wasRude = false; return { text: FORGIVE[lang] || FORGIVE.en, apps: [pickApp()] }; }
+  if (RUDE.test(s)) { wasRude = true; return { text: `${COMPLAIN[lang] || COMPLAIN.en}<br><a href="mailto:senacore@icloud.com">senacore@icloud.com</a>`, chips: c.more }; }
+  if (has(s, /作者|developer|about|誰|who|開発者|關於|개발자/)) return c.about;
+  if (has(s, /ジャンル|genre|類型|장르/)) return { text: c.cats, chips: Object.values(tx('cat')).slice(1) };
+  if (has(s, /おまかせ|おすすめ|surprise|random|推薦|아무거나|추천/)) {
+    const a = pickApp();
+    return { text: c.pick, apps: [a], chips: [c.chips[3], ...c.more.slice(0,2)] };
+  }
+  const name = APPS.filter(a => s.includes(a.n.toLowerCase()));
+  const quick = !name.length && smallTalk(s);
+  if (quick && !has(s, /アプリ|app|無料|free|パズル|puzzle|ゲーム|game|最近|recent|円|¥/)) return { text: quick };
+  if (name.length) return { text: desc(name[0]), apps: name };
 
-                copyright: "Copyright © 2026 K.SENA. All rights reserved.",
-                privacy_link: "개인정보 처리방침",
-                contact_link: "문의하기",
-                location: "Designed in Japan.",
-                privacy_title: "개인정보 처리방침"
-            }
-        };
+  let r = [...APPS], text = '';
+  const catKey = Object.entries({game:/パズル|puzzle|ゲーム|game|益智|遊戲|퍼즐|게임/, calm:/落ち着|calm|静|気分|mood|心情|기분|relax/,
+    learn:/学|learn|英語|morse|학습/, tool:/道具|tool|工具|도구/}).find(([k,re]) => has(s, re) || s === tx('cat')[k].toLowerCase());
+  if (catKey) r = r.filter(a => a.cat === catKey[0]);
+  if (has(s, /無料|free|免費|무료/)) r = r.filter(a => !a.p);
+  const yen = s.match(/(\d+)\s*(円|yen|日圓|엔)?\s*(以下|or less|under|이하)?/) || (has(s, /¥\s*(\d+)/) && s.match(/¥\s*(\d+)/));
+  if (yen && has(s, /以下|less|under|이하|¥|円|엔|日圓/)) r = r.filter(a => a.p <= +yen[1]);
+  if (has(s, /最近|新しい|新着|recent|new|latest|최근|새/)) { r = r.sort((a,b) => b.d.localeCompare(a.d)); text = c.newest; }
+  if (r.length === APPS.length && !text) r = APPS.filter(a => (a.ja + a.en + a.n).toLowerCase().includes(s));
+  if (!r.length) { const t = smallTalk(s); return t ? { text: t } : { text: pick(FALLBACK[lang] || FALLBACK.en) + `<br><a href="mailto:senacore@icloud.com">senacore@icloud.com</a>`, chips: c.chips }; }
+  if (false) return { text: `${c.none} <a href="mailto:senacore@icloud.com">senacore@icloud.com</a>`, chips: c.chips };
+  const shown = r.slice(0, 3);
+  return { text: (text || c.found(r.length)) + (r.length > 3 ? ' ' + c.rest(r.length - 3) : ''), apps: shown };
+}
+function ask(q) { q = q.trim(); if (!q) return; add(q.replace(/[<>&]/g,''), 'me'); chips.innerHTML = ''; botSay(answer(q), 500 + Math.random()*400); }
+chatForm.onsubmit = e => { e.preventDefault(); ask(chatIn.value); chatIn.value = ''; };
 
-        // Scroll Reveal Animation
-        const observerOptions = {
-            root: null,
-            rootMargin: '0px',
-            threshold: 0.1
-        };
+/* ---------- theme：既定は端末の設定に従い、ボタンで上書き（選択は端末に保存） */
+const mq = matchMedia('(prefers-color-scheme: dark)');
+function getSaved() { try { return localStorage.getItem('theme'); } catch { return null; } }
+function applyTheme(t) {
+  const r = document.documentElement;
+  if (t) r.dataset.theme = t; else delete r.dataset.theme;
+  const dark = t ? t === 'dark' : mq.matches;
+  r.toggleAttribute('data-dark', dark);
+}
+applyTheme(getSaved());
+mq.addEventListener('change', () => applyTheme(getSaved()));
+themeBtn.onclick = () => {
+  const next = document.documentElement.hasAttribute('data-dark') ? 'light' : 'dark';
+  try { localStorage.setItem('theme', next); } catch {}
+  applyTheme(next);
+};
 
-        const observer = new IntersectionObserver((entries, observer) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.fade-up').forEach(el => {
-            observer.observe(el);
-        });
-
-        // Language Switch Logic
-        function switchLang(lang) {
-            // Update Text Elements
-            const elements = document.querySelectorAll('[data-translate]');
-            elements.forEach(el => {
-                const key = el.getAttribute('data-translate');
-                if (translations[lang] && translations[lang][key]) {
-                    el.innerHTML = translations[lang][key];
-                }
-            });
-
-            // Update HTML lang attribute
-            document.documentElement.lang = lang;
-
-            // Update Active Button State
-            document.querySelectorAll('.lang-btn').forEach(btn => {
-                if(btn.textContent.toLowerCase() === lang.toLowerCase() || 
-                   (btn.textContent === 'CHT' && lang === 'zh-TW') ||
-                   (btn.textContent === 'JP' && lang === 'ja')) {
-                    btn.classList.add('active');
-                    btn.classList.remove('text-[#86868b]');
-                } else {
-                    btn.classList.remove('active');
-                    btn.classList.add('text-[#86868b]');
-                }
-            });
-
-            // Update Privacy Policy Content Visibility
-            document.querySelectorAll('.policy-content').forEach(content => {
-                content.classList.remove('active');
-                if (content.classList.contains(lang)) {
-                    content.classList.add('active');
-                }
-            });
-        }
-
-        // Privacy Modal Logic
-        const modal = document.getElementById('privacyModal');
-        
-        function openPrivacyModal() {
-            modal.classList.remove('hidden');
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
-        }
-
-        function closePrivacyModal() {
-            modal.classList.add('hidden');
-            document.body.style.overflow = '';
-        }
-
-        // Initialize with default language if needed, but HTML is static mostly
-        // Default is English (matches HTML), no action needed on load unless we detect locale.
-    </script>
+render();
+</script>
 </body>
 </html>
